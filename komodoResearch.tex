@@ -1,6 +1,99 @@
 \sctn{KoMoDo}
 KoMoDo utilises additional components to provide capabilities which allow users to emulate the 32-bit ARM chip. It communicates with the various components in different ways. For example communication between the Jimulator and KoMoDo occurs via a two-way Unix pipe in the form of commands defined by the Jimulator. This section aims to explore the communication between these various components and how they are integrated into KoMoDo. 
 
+\ssctn{Keywords}
+  \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries \footnotesize inter process communication}]
+    \item[\footnotesize Register bank] Used to hold a set of 18 registers, there are 7 register banks in the ARM32.
+    \item[\footnotesize Register] A register is used to hold a piece of information, it is a special type of memory contained within the CPU. ARM32 has a total of 18 registers, R0 - R14, a Program counter, a current program status register and a saved program status register.
+    \item[\footnotesize Inter process communication] Communication between two separate processes potentially running on separate CPUs with completely separate memory.
+    \item[\footnotesize (*nix) pipes] Communication highways, on *nix systems they are files placed in the processes runtime kernel folder, when a process begins it is allocated a set of file descriptors (FD) or handles that it reads from, STDIN, a FD which it writes to normally which is buffered, STDOUT, and one for errors which is unbuffered, STDERR.
+  \end{description}
+%
+\ssctn{Jimulator}
+% Talk about the commands used by the jimulator
+% What the commands do
+KoMoDo running in emulation mode starts the jimulator; a 32-bit ARM emulator as a separate process. This process has its STDIN and STDOUT pipes redirected to that of KoMoDos; once communication has been established the jimulator is able to receive commands.\\\\
+%
+The command system is a primitive example of messaging systems you see in modern operating systems. These systems allow for IPC. KoMoDo uses the primitive IPC to update the user interface as the code is executed. This section provides an overview of the given commands, they are split into several logical subgroups which relate to their operation.
+%
+\sssctn{Status commands}
+%
+\fig{
+  \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries \footnotesize BR\_WOT\_U\_DO}]
+    \item[\footnotesize BR\_PING] Reply to sender with $ok$ message.
+    \item[\footnotesize BR\_WOT\_U\_DO] Send back the Jimulators state, the number of steps to go, and the number of steps needed for a reset.
+    \item[\footnotesize BR\_WOT\_R\_U] This is a bit dubious and needs further investigation.
+  \end{description}
+}{Jimulator status commands}{jimstatus}
+%
+\itl{BR\_PING} is sent to determine whether the jimulator is still running. This particular command is in the jimulator so as to mimic physical boards. Physical boards have a tendancy to crash and so a ping is sent by KoMoDo to determine if they are alive.\\\\
+%
+A \itl{BR\_WOT\_U\_DO} command is sent when performing a UI update. KoMoDo uses the returning information to update the UI accordingly, e.g. if there are still steps to go, KoMoDo will disable the step button etc. until the jimulator has completed the requested steps.\\\\
+%
+\itl{BR\_WOT\_R\_U} needs further investigation as I'm not quite sure what it's doing.\\\\ 
+%
+%
+%
+\sssctn{Operation commands}
+\fig{
+  \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries \footnotesize BR\_PAUSE \& BR\_STOP}]
+    \item[\footnotesize BR\_RESET] Reset the board state, program counter and interrupts.
+    \item[\footnotesize BR\_PAUSE \& BR\_STOP] If the jimulator was running stop running.
+    \item[\footnotesize BR\_CONTINUE] Continue execution if the client was stepping and there are steps to go.
+    \item[\footnotesize BR\_START] Start execution, in the jimulator this is not handled normally.
+  \end{description}
+}{Jimulator operation commands}{jimoperation}
+%
+\itl{BR\_RESET} is sent when the user wants to return to the start of a particular piece of code, so that it could be run again. KoMoDo exposes this message as a button, alternatively, KoMoDo will send this message when loading a new source file.\\\\
+%
+\itl{BR\_PAUSE \& BR\_STOP} are treated the same within the jimulator, they halt operations and switch the Jimulators internal state to stopped. KoMoDo exposes these as a button which the user can press once execution has started.\\\\
+%
+\itl{BR\_CONTINUE} progresses the execution if stopped and there are steps to go. Jimulator checks to see if its status is stopped, if so will continue, any other states and the jimulator will not continue execution. KoMoDo sends this command if the pressed the button and the jimulator has stopped with steps to go.\\\\
+%
+\itl{BR\_START} is not conventionally handled by the jimulator. Once received it is funnelled to the $monitor\_breakpoints$ function. This function checks flags pertaining to the status of breakpoints, reads the steps to go for execution and sets the appropriate state for the jimulator. KoMoDo exploits this odd implementation to start the jimulator.\\
+%
+%
+%
+\sssctn{Memory commands}
+\fig{
+  \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries \footnotesize BR\_SET\_MEM}]
+    \item[\footnotesize BR\_SET\_MEM] Set the memory at some address location with some data.
+    \item[\footnotesize BR\_SET\_REG] Set the register value for a specific register in one of the different register banks.
+    \item[\footnotesize BR\_GET\_MEM] Get the data for some address in memory
+    \item[\footnotesize BR\_GET\_REG] Get the value for some register in one of the register banks.
+  \end{description}
+}{Jimulator memory commands}{jimmemory}
+%
+KoMoDo uses \itl{BR\_SET\_MEM} when a KMD source file has been compiled and is being loaded, KoMoDo parses the compiled KMD file and updates both its internal source structure and sets the Jimulators emulated memory.\\\\
+%
+\itl{BR\_SET\_REG} is called when the user changes a register value in a specific register bank. KoMoDo sends the register value and address to the Jimulator. Where the Jimulator updates its internal representation\\\\
+%
+KoMoDo sends \itl{BR\_GET\_MEM} when the user has clicked a row of the memory table. This to fill the appropriate memory row with the corresponding data.\\\\
+%
+\itl{BR\_GET\_REG} is used as part of the update functionality of KoMoDo; an update occurs when either the program is being stepped, ran or the user has changed/clicked on a field. Consequently, \itl{BR\_GET\_REG} is sent to retrieve whole register banks or single registers.
+%
+%
+%
+\sssctn{Breakpoint commands}
+\fig{
+  \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries \footnotesize BR\_BP\_WRITE}]
+    \item[\footnotesize BR\_BP\_GET] Get the trap status.
+    \item[\footnotesize BR\_BP\_SET] Set the trap status.
+    \item[\footnotesize BR\_BP\_READ] Get information for a particular breakpoint.
+    \item[\footnotesize BR\_BP\_WRITE] Set information for a particular breakpoint.
+  \end{description}
+}{Jimulator breakpoint commands}{jimbreakpoints}
+%
+\itl{BR\_BP\_GET} is used to retrieve the index of one of the 32 allowed breakpoints followed by the
+This whole bit needs more looking into!
+%
+%
+%
+%
+%
+%
+%
+%
 \ssctn{Chump}
 
-\ssctn{Jimulator}
+
