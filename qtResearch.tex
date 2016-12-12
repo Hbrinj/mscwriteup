@@ -1,0 +1,37 @@
+\sctn{Frameworks}
+%
+KoMoDo++ is designed with the future in mind, to achieve this there are several important requirements that a framework needs. How are the user interfaces and experiances built, is it portable to other architectures, the framework ease of use and the manipulations required for KoMoDo. To determine the best framework to use this section will explore three different approaches, weighing their pros and cons as well as how well they meet the requirements, any additional features which will be useful to KoMoDo++ will also be highlighted.\\\\
+%
+\ssctn{GTK}
+  \sssctn{Glade}
+  Glade is a cross-platform UI generator, built to support GTK applications. One of the more prominent applications that works both on Windows and *nix is GIMP, an image manipulation program. Glade provides a plethora of useful UI elements and is easy to use. The original KoMoDo UI was generated using Glade, so porting the existing code to the newer UI would be straight forward.\\\\
+  %
+  Glade is similiar to many of the UI creators used by other frameworks/libraries, this means it is easy to pick up and use.
+  % UI generator
+  \sssctn{MinGW and MSys}
+  % cross platform compiler providing linux like headers to compile for windows
+  \sssctn{Callbacks}
+  % Simple callbacks to KoMoDo backend.
+
+\ssctn{QT}
+  QT is a cross platform C++ framework designed with the aim to provide a consistant look and feel across multiple architectures. QT leverages its own preprocessor, the Meta-Object compiler (MOC), to provide UI features such as slots and signals which are listeners that can be coupled with UI elements. It uses a UI markup language called Qt markup language (QML) to describe/animate the user interface, providing consistancy across multiple platforms. These features and more are discussed in this section.\\\\
+  %
+  %The choice to go with QT was based on several factors: cross platform support, learning curve, resources and any additional dependecies the framework introduces. It was between QT, re-using GLIB/GTK and using a desktop webapp. Upgrading GLIB/GTK would allow the code to be reused with minor modifications, it wouldn't have introduced any additional dependencies, has a fairly straight forward learning curve and has many resources to aid in development; but it cannot be easily ported to other platforms.\\ Desktop webapps could easily fulfill the criteria but, with the instability of web technologies a solution that may be viable currently, can very quickly become outdated, coupled with the potential for dependencies to grow exponentially, a webapp solution can have the potential for alot of headaches. Finally QT, 
+  %
+  \ssctn{Meta-Object Compiler}
+  The MOC is geared towards extending C++ features, as a preprocessor it is executed before any actual compilation occurs. This pre-processing allows QT to manipulate and change the code that will actually be compiled. By using the $Q_OBJECT$ macro a C++ header file and the subsequent source file are changed to add additional features such as slots and signals. QT features and widgets are written using QT, this allows them to exist on a level of abstraction that the MOC can compile down to native code.
+  % provides features such as singals and slots
+  % occurs before c++ compilation
+  % generates c++ code that is then compiled in using QMAKE
+  % 
+  \sssctn{Slots/Signals}
+  \sssctn{Localisation}
+  \sssctn{QML}
+
+\ssctn{Electron}
+  \sssctn{}
+  \sssctn{}
+
+\ssctn{Conclusion}
+
+
