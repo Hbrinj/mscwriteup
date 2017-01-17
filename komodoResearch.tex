@@ -1,5 +1,6 @@
+% !TEX root = ./main.tex
 \sctn{KoMoDo components}
-KoMoDo utilises additional components to provide capabilities which allow users to emulate the 32-bit ARM chip. It communicates with the various components in different ways. For example communication between the Jimulator and KoMoDo occurs via a two-way Unix pipe in the form of commands defined by the Jimulator. This section aims to explore the communication between these various components and how they are integrated into KoMoDo. 
+KoMoDo utilises additional components to provide capabilities which allow users to emulate the 32-bit ARM chip. It communicates with the various components in different ways. For example communication between the Jimulator and KoMoDo occurs via a two-way Unix pipe in the form of commands defined by the Jimulator. This section aims to explore the communication between these various components and how they are integrated into KoMoDo.
 
 \ssctn{Keywords}
   \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries \footnotesize inter process communication}]
@@ -31,7 +32,7 @@ The command system is a primitive example of messaging systems you see in modern
 %
 A \itl{BR\_WOT\_U\_DO} command is sent when performing a UI update. KoMoDo uses the returning information to update the UI accordingly, e.g. if there are still steps to go, KoMoDo will disable the step button etc. until the Jimulator has completed the requested steps.\\\\
 %
-\itl{BR\_WOT\_R\_U} needs further investigation as I'm not quite sure what it's doing.\\\\ 
+\itl{BR\_WOT\_R\_U} needs further investigation as I'm not quite sure what it's doing.\\\\
 %
 %
 %
@@ -91,7 +92,7 @@ KoMoDo sends \itl{BR\_GET\_MEM} when the user has clicked a row of the memory ta
 %
 \itl{BR\_BP\_READ} is used to read a breakpoint definition. The definitions allow finer control over when a breakpoint is activated, they work by checking if some condition is met. Typically, this command is sent by KoMoDo when a break point is activated by the user. Alternatively, if the user selects an already selected breakpoint this is sent to retrieve the previously provided information.\\\\
 %
-\itl{BR\_BP\_WRITE} sent by KoMoDo to create a new breakpoint definition. KoMoDo will send this if the user toggles a new breakpoint that did not previously exist. KoMoDo will then send a new definition. These definitions  provide finer details about the breakpoint, e.g. the condition that needs to be fulfilled for the break to occur, which address this breakpoint lies on and 
+\itl{BR\_BP\_WRITE} sent by KoMoDo to create a new breakpoint definition. KoMoDo will send this if the user toggles a new breakpoint that did not previously exist. KoMoDo will then send a new definition. These definitions  provide finer details about the breakpoint, e.g. the condition that needs to be fulfilled for the break to occur, which address this breakpoint lies on and
 %
 %
 %
