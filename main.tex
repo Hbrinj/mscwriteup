@@ -47,6 +47,8 @@
 %
 %
 \begin{document}
+\pagenumbering{gobble}
+\thispagestyle{empty}
 
 \maketitle{}
 \begin{abstract}
@@ -63,11 +65,15 @@ Over time KoMoDo has become dated and component packages that were once in their
 % Needs to be updated so that students can still use it, at nottingham it's one of the only ways students can try a linux flavour
 
 \end{abstract}
-
 \pagebreak
+\tableofcontents
+\pagebreak
+\pagenumbering{arabic}
+%\let\clearpage\relax
 \include{introduction}
 \include{komodoResearch}
 \include{qtresearch}
+\include{requirements}
 \appendix
 %\include{researchEditors}
 %\include{researchStructures}
