@@ -1,10 +1,11 @@
 % !TEX root = ./main.tex
+\graphicspath{ {images/research/} }
 \sctn{Frameworks}
 %
 KoMoDo++ is designed with the future in mind, to achieve this there are several important requirements that a framework needs. How are the user interfaces and experiences built, is it portable to other architectures, the framework ease of use and the manipulations required for KoMoDo. To determine the best framework to use this section will explore three different approaches, weighing their pros and cons as well as how well they meet the requirements, any additional features which will be useful to KoMoDo++ will also be highlighted.
 %
 \ssctn{GTK}
-\fig{\centering\img{0.5}{research/gimp}}{GIMP image editor built using GTK}{gtkgimp}
+\fig{\centering\img{0.5}{gimp}}{GIMP image editor built using GTK}{gtkgimp}
 KoMoDos frontend is written using GTK, a Linux based UI framework. GTK boasts about its cross-compatibility and feature rich environment. It provides bindings for a host of languages but most importantly for c. The  `look and feel' of GTK applications can be styled using themes to provides a consistent visual across platforms, although, this can vary depending on the host system. Compatibility outside of Linux requires additional applications to be installed so that the native GTK applications can be compiled. In this sections we explore some of the features provided by GTK. GTK was initially developed due to the closed source nature of QT.
   \sssctn{Glade}
   Glade is a cross-platform UI generator, built to support GTK applications. One of the more prominent applications that works both on Windows and *nix is GIMP, an image manipulation program. Glade provides a plethora of useful UI elements and is easy to use. The original KoMoDo UI was generated using Glade, so porting the existing code to the newer UI would be straight forward.\\\\
@@ -31,7 +32,7 @@ KoMoDos frontend is written using GTK, a Linux based UI framework. GTK boasts ab
   GTK aims to translate well to other platforms but requires additional work on the clients end. To build a GTK application on windows, a user must install MinGW and MSys to provide the necessary Linux functionality and headers. GTK on MacOS has a similar issue requiring additional steps before the application can be used.
 
 \ssctn{QT}
-\fig{\centering\img{0.35}{research/amd}}{AMD graphics manager built using QT}{qtamd}
+\fig{\centering\img{0.35}{amd}}{AMD graphics manager built using QT}{qtamd}
 QT is a cross platform C++ framework designed with the aim to provide a consistent look and feel across multiple architectures. QT leverages its own preprocessor, the Meta-Object compiler (MOC), to provide UI features such as slots and signals which are listeners that can be coupled with UI elements. It uses a UI markup language called QT Markup Language (QML) to describe/animate the user interface, providing consistency across multiple platforms. These features and more are discussed in this section.
   %
   \sssctn{Meta-Object Compiler}
@@ -55,7 +56,7 @@ QT is a cross platform C++ framework designed with the aim to provide a consiste
   QTs slots and signals introduce little overhead to the overall performance of a program, of course running native applications are faster, but this comes at the discretion of the developer. Moreover, because QT uses C++ it comes packed with efficient standard libraries and data structures.
   %
 \ssctn{Electron and AngularJS}
-\fig{\centering\img{0.23}{research/atom}}{Atom, a popular text editor built using Electron}{electronatom}
+\fig{\centering\img{0.23}{atom}}{Atom, a popular text editor built using Electron}{electronatom}
 Electron is vastly different to the other two frameworks talked about in this section, electron itself is a runtime environment which interprets and runs web scripting languages such as HTML or Javascript and uses CSS for styling. Web technologies in recent year have see a rise in frameworks and as such there are plenty to choose from, in particular AngularJS, a fairly recent web framework by google. Due to the nature of electron, frameworks such as AngularJS can be run in an application on the desktop, providing a seamless UI written using web technologies. Furthermore, they can be ran on the web as a website.
 %
   \sssctn{Electron environment}
@@ -80,6 +81,13 @@ Electron is vastly different to the other two frameworks talked about in this se
   Hackability also comes at a cost, the ease of using plugable modules brings its own performance hit, especially when they are being loaded. Importing a module is a synchronous process, each module may also have its own imports, the cascading imports can potentially slow down application startup. Consequently, developers need to think deeply about how to implement their solutions.
 
 \ssctn{Conclusion}
+QT is a very mature framework, having been conceived before both GTK and Electron, it has had time to make mistakes and correct them. It provides many features developers are looking for, in particular slots and signals but this comes at the cost of compilation complexity. Alternatively, GTK provides callbacks which keep things simple, but force tight coupling with UI elements. Electron and AngularJS provide similar features to QT but with the added complexity of working with web technologies.\\\\
+%
+Electron provides the best styling out of the three frameworks, the universal nature of CSS means that regardless of platform it will be interpreted in a deterministic manner. QT tries to provide a similar experience across its multiple platforms, but is often hindered by the target platform. Consequently, developers are forced to account for the subtle differences between each platform. GTK also suffers from a similar issue, leaving the platform dependant complexities to the developer.\\\\
+%
+GTK, GLib and Linux are heavily integrated into KoMoDo, in essence a project like this requires that KoMoDo be built again from the ground up removing platform dependencies. To do that would be outside the scope of this particular project. GLib is still a formidable framework and one that was develop due to the closed nature of earlier versions of QT. Although using GTK on multiple platforms is complex it can be done with proper guidance.\\\\
+%
+The framework to use based on several factors and the scope of the project is GTK. Almost all the functionality already exists within KoMoDo and so only minor changes need to be made. The use of MinGW and MSys allows components like the Jimulator to function as if they are being run in a Linux environment, being the heart of KoMoDo the Jimulator is its own complex program.
 %QT is much more mature than electron and GTK, features like slots and signals make it easy for developers to work with. The MOC is extendable so features required by a project could be added, for a KoMoDo port all three parts of KoMoDo need to be written in some platform independant way. Qt runs at almost native speeds
 
 %Electron is clean and has access to alot of librarys, the CSS styling and the use of exsisting webframeworks means that app development is quick and stylish. Requires platform independant code to work well, can be slow due to the copious things its doing
