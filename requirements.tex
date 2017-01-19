@@ -26,3 +26,99 @@ Mike has just been given his first assignment which asks him to implement a simp
 %
 \bld{Scenario 2: Lucy}\\
 Lucy begins to design her machine language, she uses a simple program written in ARM32 as the basis for her design. She has not used KoMoDo++ yet and she notes that upon opening KoMoDo++ it was good that there was a break down of its features. She starts by stepping through the code in the advanced view and takes note about the flags that change. She is particularly pleased with the code breakdown as it gives her insight into what the command does on the fly. Lucy carries on slowly building up her new language, referring to the decisions made for ARM32.
+
+\ssctn{Use case diagrams}
+\begin{tikzpicture}[>=latex]
+			%elements
+			% \draw (0,0) circle (1cm);
+			\node [thick] at (0,0) (head) [circle,draw, minimum width=20mm] {};
+			\node at ($(head.north west) + (-1cm,0.5cm)$)[] {\itl{Mike}};
+			%torso
+			\draw [thick] (canvas cs:x=0cm,y=-10mm) -- (canvas cs:x=0cm,y=-4.5cm);
+			%arms
+			\draw [thick] (canvas cs:x=-1.5cm,y=-2cm) -- (canvas cs:x=1.5cm,y=-2cm);
+			%right leg
+			\draw [thick] (canvas cs:x=0cm,y=-4.5cm) -- (canvas cs:x=1.5cm,y=-6.5cm);
+			%right leg
+			\draw [thick] (canvas cs:x=0cm,y=-4.5cm) -- (canvas cs:x=-1.5cm,y=-6.5cm);
+			%name
+			\node at (canvas cs:x=0cm,y=-7cm) [] {Mike (User)};
+			%requirements box
+			\node at (canvas cs:x=8cm,y=-2.75cm) (box) [rectangle, draw=black!100, minimum width=5cm, minimum height=7.5cm] {};
+
+			% requirements
+			\node [right] at ($(box.north west) + (0.4cm, -1cm)$) (req1) [ellipse,draw=black!100,minimum width=4cm,minimum height=1.5cm] {Syntax highlighting};
+			\node [] at ($(req1.south) + (0cm, -1cm)$) (req2) [ellipse,draw=black!100,minimum width=4cm,minimum height=1.5cm] {Intuitive};
+			\node [] at ($(req2.south) + (0cm, -1cm)$) (req3) [ellipse,draw=black!100,minimum width=4cm,minimum height=1.5cm] {Platform: Windows};
+			\node [] at ($(req3.south) + (0cm, -1cm)$) (req4) [ellipse,draw=black!100,minimum width=4cm,minimum height=1.5cm ,text width=3cm, align=center] {Command breakdown};
+
+
+			\draw [] (req1.west) -- (canvas cs:x=1.5cm,y=-2cm);
+			\draw [] (req2.west) -- (canvas cs:x=1.5cm,y=-2cm);
+			\draw [] (req3.west) -- (canvas cs:x=1.5cm,y=-2cm);
+			\draw [] (req4.west) -- (canvas cs:x=1.5cm,y=-2cm);
+		\end{tikzpicture}
+		\\\\\\
+		\begin{tikzpicture}[>=latex]
+			%elements
+			% \draw (0,0) circle (1cm);
+			\node [thick] at (0,0) (head) [circle,draw, minimum width=20mm] {};
+			\node at ($(head.north west) + (-1cm,0.5cm)$)[] {\itl{Lucy}};
+			%torso
+			\draw [thick] (canvas cs:x=0cm,y=-10mm) -- (canvas cs:x=0cm,y=-4.5cm);
+			%arms
+			\draw [thick] (canvas cs:x=-1.5cm,y=-2cm) -- (canvas cs:x=1.5cm,y=-2cm);
+			%right leg
+			\draw [thick] (canvas cs:x=0cm,y=-4.5cm) -- (canvas cs:x=1.5cm,y=-6.5cm);
+			%right leg
+			\draw [thick] (canvas cs:x=0cm,y=-4.5cm) -- (canvas cs:x=-1.5cm,y=-6.5cm);
+			%name
+			\node at (canvas cs:x=0cm,y=-7cm) [] {Lucy (User)};
+			%requirements box
+			\node at (canvas cs:x=8cm,y=-2.75cm) (box) [rectangle, draw=black!100, minimum width=5cm, minimum height=7.5cm] {};
+
+			% requirements
+			\node [right] at ($(box.north west) + (0.4cm, -1cm)$) (req1) [ellipse,draw=black!100,minimum width=4cm,minimum height=1.5cm] {Advanced features};
+			\node [] at ($(req1.south) + (0cm, -1cm)$) (req2) [ellipse,draw=black!100,minimum width=4cm,minimum height=1.5cm] {Tutorial};
+			\node [] at ($(req2.south) + (0cm, -1cm)$) (req3) [ellipse,draw=black!100,minimum width=4cm,minimum height=1.5cm] {Platform: Mac};
+			\node [] at ($(req3.south) + (0cm, -1cm)$) (req4) [ellipse,draw=black!100,minimum width=4cm,minimum height=1.5cm ,text width=3cm, align=center] {Command breakdown};
+
+
+			\draw [] (req1.west) -- (canvas cs:x=1.5cm,y=-2cm);
+			\draw [] (req2.west) -- (canvas cs:x=1.5cm,y=-2cm);
+			\draw [] (req3.west) -- (canvas cs:x=1.5cm,y=-2cm);
+			\draw [] (req4.west) -- (canvas cs:x=1.5cm,y=-2cm);
+		\end{tikzpicture}
+    %
+    %
+  \ssctn{Software requirement specification}
+  Prototyping is a key component of the agile methodology, to do so two individual requirement specifications will be developed, one for the prototype and one for the final product. It is important to develop prototypes as they can quickly reveal issues with implementation considerations.
+  %
+  \sssctn{Prototype}
+  The requirements for the prototype form the basis on which the final product will be built.\\\\
+  %
+  \itl{Functional requirements}\\
+  \itm{
+    \item Provide the same functionality as the current KoMoDo \itm{
+        \item Register banks
+        \item Memory view
+        \item Breakpoints
+        \item Single stepping
+        \item Multi stepping
+        \item Loading kmd files
+        \item Compiling source files
+        \item Editing the source
+      }
+    \item Introduce no additional dependencies
+  }
+  %
+  \itl{Non-functional requirements}\\
+  \itm{
+    \item Intuitive design \itm{
+        \item Basic view mode
+        \item Advanced view mode
+      }
+    \item Compatibility: Linux
+    \item Similar responsiveness as the current KoMoDo
+  }
+  \sssctn{Final product}
