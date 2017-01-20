@@ -4,7 +4,7 @@
 \sctn{Requirements}
 This section is dedicated to capturing the requirements of potential users within the scope of KoMoDos educational use. Personas will be created to conceptualise the requirements required to achieve the desired results.\\\\
 %
-System requirements should be malleable transforming over time as use cases and users change. Change in the requirements over time allows the end product to better suit the software needs. Using the agile development methodology allows for a reactive planning and development process, focusing on early delivery and continuous development.\\\\
+System requirements should be malleable transforming over time as use cases and users change. Change in the requirements over time allows the end product to better suit the software needs. Using the agile development methodology allows for a reactive planning and development process, focusing on early delivery and continuous development \cite{wikipedia_agile_dev}.\\\\
 %
 The functional requirements of KoMoDo++ will be derived from the persona use cases.
 
@@ -101,24 +101,52 @@ Lucy begins to design her machine language, she uses a simple program written in
   \itm{
     \item Provide the same functionality as the current KoMoDo \itm{
         \item Register banks
-        \item Memory view
+				\item Memory view \itm{
+					\item editing memory
+				}
         \item Breakpoints
         \item Single stepping
         \item Multi stepping
         \item Loading kmd files
         \item Compiling source files
-        \item Editing the source
       }
-    \item Introduce no additional dependencies
+    \item Introduce no additional dependencies\\\\
   }
   %
   \itl{Non-functional requirements}\\
   \itm{
     \item Intuitive design \itm{
         \item Basic view mode
-        \item Advanced view mode
       }
     \item Compatibility: Linux
     \item Similar responsiveness as the current KoMoDo
+		\item Create installer for supported platforms\\
   }
   \sssctn{Final product}
+	\itm{
+    \item Provide the same functionality as the current KoMoDo \itm{
+        \item Register banks
+        \item Memory view \itm{
+					\item editing memory
+				}
+        \item Breakpoints
+        \item Single stepping
+        \item Multi stepping
+        \item Loading kmd files
+        \item Compiling source files
+      }
+    \item Introduce no additional dependencies
+		\item Syntax highlighting
+		\item Instruction breakdown\\\\
+  }
+  %
+  \itl{Non-functional requirements}\\
+  \itm{
+    \item Intuitive design \itm{
+        \item Basic view mode
+				\item Advanced view mode
+      }
+    \item Compatibility: Linux, windows mac
+    \item Similar responsiveness as the current KoMoDo
+		\item Create installer for supported platforms
+  }
