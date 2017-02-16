@@ -5,7 +5,7 @@ KoMoDo utilises additional components to provide capabilities which allow users 
 \ssctn{Keywords}
   \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries \footnotesize inter process communication}]
     \item[\footnotesize Register bank] Used to hold a set of 18 registers. KoMoDo provides 7 different register banks.
-    \item[\footnotesize Register] A register is used to hold a piece of information, it is a special type of memory contained within the CPU. ARM32 has a total of 18 registers, R0 - R14, a Program counter, a current program status register and a saved program status register.
+    \item[\footnotesize Register] A register is used to hold a piece of information, it is a special type of memory contained within the CPU. ARM32 has a total of 18 registers, R0 - R14 which are the general purpose registers, a Program counter, a current program status register and a saved program status register.
     \item[\footnotesize Inter process communication] Communication between two separate processes potentially running on separate CPUs with completely separate memory.
     \item[\footnotesize (*nix) pipes] Communication highways, on *nix systems they are files placed in the processes runtime kernel folder, when a process begins it is allocated a set of file descriptors (FD) or handles. There are three FDs that are provided to new processes; a process may read from STDIN and write to  either STDOUT or STDERR.§
     \item[\footnotesize breakpoint] A concept in most modern debuggers, a breakpoint is used to halt execution when a particular memory address is reached.
@@ -14,9 +14,9 @@ KoMoDo utilises additional components to provide capabilities which allow users 
 \ssctn{Jimulator}
 % Talk about the commands used by the jimulator
 % What the commands do
-KoMoDo running in emulation mode starts the Jimulator; a 32-bit ARM emulator as a separate process. This process has its STDIN and STDOUT pipes redirected to that of KoMoDos; once communication has been established the Jimulator is able to receive commands.\\\\
+KoMoDo running in emulation mode starts the Jimulator; a 32-bit ARM emulator as a separate process. This process has its STDIN and STDOUT pipes redirected to those of KoMoDos; once communication has been established. The Jimulator is then able to receive commands.\\\\
 %
-The command system is a primitive example of messaging systems you see in modern operating systems. These systems allow for IPC. KoMoDo uses the primitive IPC to update the user interface as the code is executed. This section provides an overview of the given commands, they are split into several logical subgroups which relate to their operation.
+The command system is a primitive example of messaging systems you see in modern operating systems. These systems allow for inter-process communications (IPC). KoMoDo uses the primitive IPC to update the user interface as the code is executed. This section provides an overview of the given commands, they are split into several logical subgroups which relate to their operation.
 %
 \sssctn{Status commands}
 %
@@ -66,13 +66,13 @@ A \itl{BR\_WOT\_U\_DO} command is sent when performing a UI update. KoMoDo uses 
   \end{description}
 }{Jimulator memory commands}{jimmemory}
 %
-KoMoDo uses \itl{BR\_SET\_MEM} when a KMD source file has been compiled and is being loaded, KoMoDo parses the compiled KMD file and updates both its internal source structure and sets the Jimulator's emulated memory.\\\\
+KoMoDo uses \itl{BR\_SET\_MEM} when a KMD source file has been compiled and is being loaded, KoMoDo parses the compiled KMD file, updates its internal source structure and also sets the Jimulator's emulated memory.\\\\
 %
 \itl{BR\_SET\_REG} is called when the user changes a register value in a specific register bank. KoMoDo sends the register value and address to the Jimulator. Where the Jimulator updates its internal representation\\\\
 %
 KoMoDo sends \itl{BR\_GET\_MEM} when the user has clicked a row of the memory table. This to fill the appropriate memory row with the corresponding data.\\\\
 %
-\itl{BR\_GET\_REG} is used as part of the update functionality of KoMoDo; an update occurs when either the program is being stepped, ran or the user has changed/clicked on a field. Consequently, \itl{BR\_GET\_REG} is sent to retrieve either a specific register or all of them.
+\itl{BR\_GET\_REG} is used as part of the update functionality of KoMoDo; an update occurs when either the program is being stepped, executed or the user has changed/clicked on a field. Consequently, \itl{BR\_GET\_REG} is sent to retrieve either a specific register or all of them.
 %
 %
 %
@@ -88,11 +88,11 @@ KoMoDo sends \itl{BR\_GET\_MEM} when the user has clicked a row of the memory ta
 %
 \itl{BR\_BP\_GET}s exact functionality is dubious as one of the values used when KoMoDo sends this command is not explicitly set or defined, anywhere. The initial understanding is that it is used to retrieve the index of one of the 32 allowed breakpoints, followed by the breakpoint status. KoMoDo will send this when determining if a toggled breakpoint has been previously set or not.\\\\
 %
-\itl{BR\_BP\_SET} is used to set one of the 32 breakpoints, here represented as a bitfield, as active and to update the status. This again is poorly document and needs to be ran through GDB to really find out what is going on. KoMoDo will send this to update the trap status and breakpoint bitfield if a breakpoint has changed.\\\\
+\itl{BR\_BP\_SET} is used to set one of the 32 breakpoints, here represented as a bit-field, as active and to update the status. This again is poorly document and needs to be run through GDB to find out what really is going on. KoMoDo will send this to message update the trap status and breakpoint bit-field if a breakpoint has changed.\\\\
 %
 \itl{BR\_BP\_READ} is used to read a breakpoint definition. The definitions allow finer control over when a breakpoint is activated, they work by checking if some condition is met. Typically, this command is sent by KoMoDo when a break point is activated by the user. Alternatively, if the user selects an already selected breakpoint this is sent to retrieve the previously provided information.\\\\
 %
-\itl{BR\_BP\_WRITE} sent by KoMoDo to create a new breakpoint definition. KoMoDo will send this if the user toggles a new breakpoint that did not previously exist. KoMoDo will then send a new definition. These definitions  provide finer details about the breakpoint, e.g. the condition that needs to be fulfilled for the break to occur, which address this breakpoint lies on and
+\itl{BR\_BP\_WRITE} is sent by KoMoDo to create a new breakpoint definition. KoMoDo will send this if the user toggles a new breakpoint that did not previously exist. KoMoDo will then send a new definition. These definitions  provide finer details about the breakpoint, e.g. the condition that needs to be fulfilled for the break to occur, which address this breakpoint lies on and so on.
 %
 %
 %
