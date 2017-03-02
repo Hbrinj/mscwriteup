@@ -1,0 +1,33 @@
+% !TEX root = ./main.tex
+\sctn{Implementation}
+  \ssctn{Complications}
+  Unfortunatly, KoMoDo turned out to be far more complex than originally thought\footnote{More of a pandoras box really}. Some of the issues encountered are discussed further within this section.
+    \sssctn{User-interface}
+    When KoMoDo was concieved Glade, the visual UI creator did not exist. Consequently, all of KoMoDos UI is hardcoded, therefore each element is individually packed into containers, shown the user and even manipulated. The tight coupling between the UI and KoMoDo itself poses porting challenges as a large percentage of features are deprecated in later iterations.\\\\
+    %
+    Furthermore, later iterations of GTK allow the developer to theme their application using CSS styling, with each UI element being part of a CSS selector. With GTK1 this isn't quite possible, it requires the use of themeing software such as QTCurve which, changes the UI of all GTK built applications.\\\\
+    %
+    Finally, one of the features discussed was syntax highlighting for the memory display, with GTK2 onwards the treeview requires that the data structure contain a class which knowns how to draw the column data onto the view. GTK2 would have made implementing this feature far simpler, allowing each instruction to be highlighted accordingly. This is not possible in GTK1, the CLIST is a rigid widget which draws only text/pixmaps onto the screen. Furthermore, colouring is limited to rows or columns but not to individual characters. A possible way to over come this issue is to generate pixmaps which represent the machine instructions, drawing them onto the list instead.
+    %GTK2 allows themeing via CSS, GTK1 does not, possibility to theme using qtcurve
+    %Syntax highlighting requires ability to render own text
+    \sssctn{Porting to GTK3}
+    This was the first blow to the original idea, trying to bring KoMoDo into a more stable version of GTK until it needed porting again in 10 years. GTK3 deprecates features found in GTK2 and completely removes features deprecated in GTK2, with major logic change dictating how various widgets are used.\\
+    At this point it was evident that GTK3 is a far stretch, with so many changes to the program flow.
+    %instant issues due to major API overhaul
+    %clists dropped in favour of treeviews
+    \sssctn{Porting to GTK2}
+    GTK2 was the next target library after GTK3 proved to be far more jarring. GTK2 allows for deprecated features to be enabled, this would allow of iterative changes to the UI without breaking everything.\\\\
+    %
+    To begin with Glade was used to implement the UI change proposed in the design chapter. Glade for GTK2 came with its own problems. Glade would often crash (tested on multiple devices) the crash would cause inconsistencies within the XML interface file, forcing a redo. This was a lesson quickly learnt, due to the nature of this work version control was already in use. Consequently, regular backups after even minor changes were made.\\\\
+    %
+    Using the Glade interface file is straight forward and only requires a few GTK function calls. Problems arose when connecting the glade UI with the old logic, Glade didn't allow the use of deprecated features. Therefore, it was necessary to port some of the code over to use the new treeview implementation. In a broad sense this was successful, but in actual fact it introduced buggy logic between the old GTK1 code and the new GTK2 code additionally, the documentation and coding style were far from desireable, it was evident from the sparse comments asking 'what does this do' that the majority of KoMoDo was implemented by a single person. Furthermore, many of KoMoDos features needed to be disabled so that the new UI could be integrated, something that would be detrimental to KoMoDo. 
+    % There exists a flag which allows for deprecated features to be enabled
+    % The new user interface is written in glade
+    % clsists exist but are part of the deprecated features
+    % new uses treeview, using treeview causes alot of features to be dropped due to logic differences
+    % alot of unkowns still exist documentation is lax,
+    \sssctn{Conclusion}
+    %Porting is not feasible, would be better to re-implement KoMoDo from the ground up
+    %including logic.
+    %Working with the current system is better, can provide consistancy within the code
+    %UI can still be improved, reducing clutter
