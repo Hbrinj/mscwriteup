@@ -1,13 +1,13 @@
 % !TEX root = ./main.tex
 \sctn{Implementation}
   \ssctn{Complications}
-  Unfortunatly, KoMoDo turned out to be far more complex than originally thought\footnote{More of a pandoras box really}. Some of the issues encountered are discussed further within this section.
+  Unfortunatly, KoMoDo turned out to be far more complex than originally thought\footnote{More of a pandoras box really}. Some of the issues encountered are discussed further within this section. The conclusion outlines the rest of the plan for KoMoDo.
     \sssctn{User-interface}
     When KoMoDo was concieved Glade, the visual UI creator did not exist. Consequently, all of KoMoDos UI is hardcoded, therefore each element is individually packed into containers, shown to the user and even manipulated. The tight coupling between the UI and KoMoDo itself poses porting challenges as a large percentage of features are deprecated in later iterations.\\\\
     %
     Furthermore, later iterations of GTK allow the developer to theme their application using CSS styling, with each UI element being part of a CSS selector. With GTK1 this isn't quite possible, it requires the use of themeing software such as QTCurve which, changes the UI of all GTK built applications.\\\\
     %
-    Finally, one of the features discussed was syntax highlighting for the memory display, with GTK2 onwards the treeview requires that the data structure contain a class which knowns how to draw the column data onto the view. GTK2 would have made implementing this feature far simpler, allowing each instruction to be highlighted accordingly. This is not possible in GTK1, the CLIST is a rigid widget which draws only text/pixmaps onto the screen. Furthermore, colouring is limited to rows or columns but not to individual characters. A possible way to over come this issue is to generate pixmaps which represent the machine instructions, drawing them onto the list instead.
+    Finally, one of the features discussed was syntax highlighting for the memory display, with GTK2 onwards the treeview requires that the data structure contain a class which knows how to draw the column data onto the view. GTK2 would have made implementing this feature far simpler, allowing each instruction to be highlighted accordingly. This is not possible in GTK1, the CLIST is a rigid widget which draws only text/pixmaps onto the screen. Furthermore, colouring is limited to rows or columns as opposed to individual characters. A possible way to over come this issue is to generate pixmaps which represent the machine instructions, drawing them onto the list instead.
     %GTK2 allows themeing via CSS, GTK1 does not, possibility to theme using qtcurve
     %Syntax highlighting requires ability to render own text
     \sssctn{Porting to GTK3}
@@ -28,7 +28,7 @@
     % new uses treeview, using treeview causes alot of features to be dropped due to logic differences
     % alot of unkowns still exist documentation is lax,
     \sssctn{Conclusion}
-    After battling with GTK2, GTK3 and Glade it was evident that KoMoDo should be rebuilt from the ground up, something which would be useful for an opensource project. Most of the jimulator and parts of chump could stay relatively unchanged, but KoMoDo would need to be completely rewritten.\\\\
+    After battling with GTK2, GTK3 and Glade it was evident that KoMoDo should be rebuilt from the ground up, something which could become either an opersource or group project. Further deliberation and meetings with Dr. David Brailsford fortified this conclusion. Most of the jimulator and parts of chump could stay relatively unchanged, but KoMoDo would need to be completely rewritten. This would bring about greater oppertunity to do things correctly and removed tight coupling between the UI and logic.\\\\
     %
     Consequently, to atleast improve KoMoDos current UI, work will be carried on using GTK1, building features onto KoMoDo 'as is' while refining the UI. Reducing some of the buttons in the action bar should bring KoMoDo more inline with the design of other IDEs, making it more intuitive to use. Working the breakpoints into the memory display will allow for more intuitive use, all this can be achieved while still maintaining the complex memory window. Moreover, some sort of memory visualization which would display occupied sectors could be useful to programmers. Finally, converting some of the buttons into pictures will help to convey their use.
     %Porting is not feasible, would be better to re-implement KoMoDo from the ground up
