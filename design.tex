@@ -25,6 +25,31 @@ The memory window \itl{3}, does exactly what it is supposed to, providing a brea
 \sssctn{The second memory window with editing}
 This memory window is a waste of screen real estate, editing the code in a text editor and using the reload button makes this element obsolete. It would be best to remove this, doing so can allow more of the memory to be exposed to the user.
 \ssctn{Proposed design}
+The initial UI design underwent an iterative development cycle show in figure \ref{fig: iterative-design}, these designs where further evaluated among my peers. The feedback provided was taken and used for the final design shown in figure \ref{fig: proposedUI}.
+\fig{
+\centering
+\begin{tikzpicture}[>=latex]
+	%elements
+	\node [rounded corners=1mm]at (0,0)   (start) [rectangle,draw=black!100, minimum width=10mm, minimum height=5mm] {Start};
+
+	\node [] at ($(start.south)+(0cm,-1cm)$) (needs) [rectangle,draw=black!100, minimum width=30mm, minimum height=5mm] {Determine needs};
+	\node [] at ($(needs.south)+(0cm,-1cm)$) (build) [rectangle,draw=black!100, minimum width=30mm, minimum height=5mm] {Build design};
+	\node [] at ($(build.south)+(0cm,-1cm)$) (eval) [rectangle,draw=black!100, minimum width=30mm, minimum height=5mm] {Evaluate design};
+	\node [draw, diamond, aspect=2] at ($(eval.south)+(0cm,-1cm)$) (des) [draw=black!100, minimum width=10mm, minimum height=5mm] {};
+	\node [rounded corners=1mm]at ($(des.south)+(0cm,-1cm)$)   (end) [rectangle,draw=black!100, minimum width=10mm, minimum height=5mm] {End};
+	%text
+	\draw [->] (start.south) -- (needs.north);
+	\draw [->] (needs.south) -- (build.north);
+	\draw [->] (build.south) -- (eval.north);
+	\draw [->] (eval.south) -- (des.north);
+	\draw [->] (des.south) -- (end.north);
+	\draw [->] (des.east) -- ($(des.east) + (2cm,0cm)$) -- ($(needs.east) + (1cm,0cm)$) node [pos=0.5,right,font=\footnotesize] {Iterate} -- (needs.east);
+
+
+\end{tikzpicture}
+}{Iterative design process}{iterative-design}
+\pagebreak
+%
 \fig{ \centering\img{0.35}{proposedkomodo.pdf} }{Proposed overhaul}{proposedUI}
 The proposed interface show in figure \ref{fig: proposedUI} implements the required changes to KoMoDo. Designing the interface was done with the core design principles \cite{design_principles} in mind. The Interface is simple yet effective, providing the user with the necessary operations to perform their task. A particular effort was made to group similar elements together as well as minimising the overall elements so as to minimise cognitive overload.\\\\
 %
