@@ -28,7 +28,7 @@
     % new uses treeview, using treeview causes alot of features to be dropped due to logic differences
     % alot of unkowns still exist documentation is lax,
     \sssctn{Conclusion}
-    After battling with GTK2, GTK3 and Glade it was evident that KoMoDo should be rebuilt from the ground up, something which could become either an opersource or group project. Further deliberation and meetings with Dr. David Brailsford fortified this conclusion. Most of the jimulator and parts of chump could stay relatively unchanged, but KoMoDo would need to be completely rewritten. This would bring about greater oppertunity to do things correctly and removed tight coupling between the UI and logic.\\\\
+    After battling with GTK2, GTK3 and Glade it was evident that KoMoDo should be rebuilt from the ground up, something which could become either an opersource or group project. Further deliberation and meetings with Professor David Brailsford fortified this conclusion. Most of the jimulator and parts of chump could stay relatively unchanged, but KoMoDo would need to be completely rewritten. This would bring about greater oppertunity to do things correctly and removed tight coupling between the UI and logic.\\\\
     %
     Consequently, to atleast improve KoMoDos current UI, work will be carried on using GTK1, building features onto KoMoDo 'as is' while refining the UI. Reducing some of the buttons in the action bar should bring KoMoDo more inline with the design of other IDEs, making it more intuitive to use. Working the breakpoints into the memory display will allow for more intuitive use, all this can be achieved while still maintaining the complex memory window. Moreover, some sort of memory visualization which would display occupied sectors could be useful to programmers. Finally, converting some of the buttons into pictures will help to convey their use.
     %Porting is not feasible, would be better to re-implement KoMoDo from the ground up
@@ -37,12 +37,50 @@
     %UI can still be improved, reducing clutter
 
   \ssctn{Language and platform decisions}
+  Both the language and platform that KoMoDo is being iterated on are pre-determined due to the existing software. KoMoDo as discussed in the frameworks chapter uses GTK+ 1.2 and Glib 1.2 . Due to the complications with porting no further changes will be made to the API version for GTK and Glib.\\\\
+  %
+  As for language KoMoDo was written in pure C and so any changes to the logic will also be made using C.\\\\
+  %
+  Furthermore, the primary platform that KoMoDo needs to run on is *nix. It will be developed primarily on a *nix machine and then if possible, on other platforms. The choice of framework is the deterministic factor when attempting to run on multiple platforms. In KoMoDos case it is heavily dependent on GTK and Glib. Consequently, KoMoDo would require a full rewrite to make it platform independent.
   %predetermined due to the nature of the project
   %using GTK+ 1.2 and Glib 1.2
   \ssctn{Tools and technologies}
+  \sssctn{Building}
+  KoMoDo is built using GCC but uses Autoconf and Make to configure the correct library paths and includes. The external libraries are dynamically linked with KoMoDo, this means that the user must first install the KoMoDo dependencies.
+
+  \sssctn{Code}
+  Code is written in a text editor, in particular Vim. Vim is a barebones editor with no minimal functionality. It is fast, reliable and comes with a whole host of useful features.\\\\
+  KoMoDo is being developed on an Intel NUC running Arch Linux. As the main driver the NUC is fast and runs a barebones Linux build which is perfect for development.
+
+  \sssctn{Backups}
+  GitHub hosts Git which is a distributed version control system and the primary form of backup. Along with GitHub backups are regularly made to google drive and Dropbox, with the GitHub backup always being the most up-to-date. Git branches are used to test and work on features which are in progress, this keeps the Master branch functional. Finally, minor changes are often committed so that a full log of the progress is maintained.
+
+  \sssctn{Progress management}
+  A Kanban is used to track features through the inception/implementation/testing/complete phases. Regular sprints are used typically taking place from Wednesday through to Saturday. The sprints are for both the documentation and code. The overall progress is monitored using a Gantt chart.
   %Vim for text editing
   %built on an Intel Nuc
   %
   \ssctn{Project management}
-  %using Git with regular backups, branches to manage untested features
+  Project management is an important part of the software development pipeline. But software projects are subject to failure due to several factors \cite{software_failure}:
+  \itm{
+    \item Unrealistic project goals
+    \item Badly defined system requirements
+    \item Poor project management
+    \item Sloppy development practices
+  }
+
+  Software developers now are far more conscious of the development demands and can better determine outlandish goals. They acquire these via university, accelerator courses or while on the job. Some, may not understand the gravity of their decisions until such time as project implementation begins. This is all part of the experience of becoming a developer.\\\\
+  %
+  Early development of the requirements and research somewhat aided in the decisions made with regards to this project. However, there was no prior experience porting code to more relevant APIs. The realisation that porting was out of the question put the project at risk. Alternatively, it is a valuable lesson in dealing with legacy systems.\\\\
+  %
+  Due to the diligent time planning the errors in judgement where inconsequential to the overall software development. Planning for issues is all part of using a Gant chart. Furthermore, using the agile approach meant that both the software and write-up were quickly progressed to reflect the change in requirements. The use of a Kanban aided in micro progress updates as the project was being developed.\\\\
+  %
+  Finally, regular meetings with everyone involved in the project meant they were kept up-to-date. This provided a great deal of flexibility and trust to be established by both parties.
+
   \ssctn{Implementation of software}
+  Software development was carried out with the best coding practices in mind. Additionally, it was important to develop code which was inline with the current style, this would enable future developers to more readily become accustomed to the already in-place coding practices.
+  \sssctn{Prototype}
+  The prototype can be thought of as the current version of KoMoDo. Modifications to the UI and functionality are derived from the intended design changes. Additionally, new features which were discussed as part of the requirements are part of the final working product. The actual duration of the prototyping phase extends from the initial research into KoMoDos inner workings all the way up to the start of the implementation. \\\\
+  %
+  The breadth of the prototyping phase is due to the nature of the project, it is crucial to understand how the components already existent in KoMoDo interact and their implications. Furthermore, it was important to fully develop an idea of what KoMoDo already had in place, there are many features in KoMoDo that due to the convoluted UI are obfuscated.
+  \sssctn{Final product}
