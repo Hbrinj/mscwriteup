@@ -32,7 +32,7 @@ The command system is a primitive example of messaging systems you see in modern
 %
 A \itl{BR\_WOT\_U\_DO} command is sent when performing a UI update. KoMoDo uses the returning information to update the UI accordingly, e.g. if there are still steps to go, KoMoDo will disable the step button etc. until the Jimulator has completed the requested steps.\\\\
 %
-\itl{BR\_WOT\_R\_U} needs further investigation as I'm not quite sure what it's doing.\\\\
+\itl{BR\_WOT\_R\_U} is sent to determine the type of board if not running in emulation mode.\\\\
 %
 %
 %
@@ -88,11 +88,11 @@ KoMoDo sends \itl{BR\_GET\_MEM} when the user has clicked a row of the memory ta
 %
 \itl{BR\_BP\_GET}s exact functionality is dubious as one of the values used when KoMoDo sends this command is not explicitly set or defined, anywhere. The initial understanding is that it is used to retrieve the index of one of the 32 allowed breakpoints, followed by the breakpoint status. KoMoDo will send this when determining if a toggled breakpoint has been previously set or not.\\\\
 %
-\itl{BR\_BP\_SET} is used to set one of the 32 breakpoints, here represented as a bit-field, as active and to update the status. This again is poorly document and needs to be run through GDB to find out what really is going on. KoMoDo will send this to message update the trap status and breakpoint bit-field if a breakpoint has changed.\\\\
+\itl{BR\_BP\_SET} is used to set one of the 32 breakpoints, here represented as a bit-field, as active and to update the status. There are two sets of information sent to the Jimulator, the address of the breakpoint and its mask. The mask is used to check particular fields of the address, possibly allowing for multiple breakpoints to be satisfied. KoMoDo will send this to message update the trap status and breakpoint bit-field if a breakpoint has changed.\\\\
 %
 \itl{BR\_BP\_READ} is used to read a breakpoint definition. The definitions allow finer control over when a breakpoint is activated, they work by checking if some condition is met. Typically, this command is sent by KoMoDo when a break point is activated by the user. Alternatively, if the user selects an already selected breakpoint this is sent to retrieve the previously provided information.\\\\
 %
-\itl{BR\_BP\_WRITE} is sent by KoMoDo to create a new breakpoint definition. KoMoDo will send this if the user toggles a new breakpoint that did not previously exist. KoMoDo will then send a new definition. These definitions  provide finer details about the breakpoint, e.g. the condition that needs to be fulfilled for the break to occur, which address this breakpoint lies on and so on.
+\itl{BR\_BP\_WRITE} is sent by KoMoDo to create a new breakpoint definition. KoMoDo will send this if the user toggles a new breakpoint that did not previously exist. KoMoDo will then send a new definition. These definitions provide finer details about the breakpoint, e.g. the condition that needs to be fulfilled for the break to occur, which address this breakpoint lies on and so on.
 %
 %
 %
