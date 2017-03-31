@@ -1,8 +1,9 @@
 % !TEX root = ./main.tex
+\graphicspath{ {images/impl/} }
 \sctn{Implementation}
   \ssctn{Complications}
   Unfortunatly, KoMoDo turned out to be far more complex than originally thought\footnote{More of a pandoras box really}. Some of the issues encountered are discussed further within this section. The conclusion outlines the rest of the development plan for KoMoDo.
-    \sssctn{User-interface}
+    \sssctn{User-Interface}
     When KoMoDo was conceived, \itl{Glade}, the visual UI creator did not exist. Consequently, all of KoMoDo's UI is hardcoded. Therefore, each element is individually packed into containers, shown to the user and even manipulated. The tight coupling between the UI and KoMoDo itself poses porting challenges. Additionally, a large collection of features are deprecated in later iterations of \itl{GTK}.\\\\
     %
     Furthermore, later iterations of \itl{GTK} allow the developer to theme their application using CSS styling, with each UI element being part of a CSS selector. With \itl{GTK1} this isn't quite possible, it requires the use of theming software such as \itl{QTCurve} which, changes the UI of all \itl{GTK} built applications.\\\\
@@ -36,7 +37,7 @@
     %Working with the current system is better, can provide consistancy within the code
     %UI can still be improved, reducing clutter
 
-  \ssctn{Language and platform decisions}
+  \ssctn{Language and Platform Decisions}
   Both the language and platform that KoMoDo is being iterated on are pre-determined due to the existing software. KoMoDo as discussed in the frameworks chapter uses \itl{GTK+} 1.2 and \itl{GLib} 1.2 . Due to the complications with porting no further changes will be made to the API version for \itl{GTK} and \itl{GLib}.\\\\
   %
   As for language, KoMoDo was written in pure C and so any changes to the logic will also be made using C.\\\\
@@ -44,7 +45,7 @@
   Furthermore, the primary platform that KoMoDo needs to run on is *nix. It will be developed primarily on a *nix machine and then if possible, on other platforms. The choice of framework is the determining factor when attempting to run on multiple platforms. In KoMoDo's case it is heavily dependent on \itl{GTK} and \itl{GLib}. Consequently, KoMoDo would require a full rewrite to make it platform independent.
   %predetermined due to the nature of the project
   %using GTK+ 1.2 and Glib 1.2
-  \ssctn{Tools and technologies}
+  \ssctn{Tools and Technologies}
   \sssctn{Building}
   KoMoDo is built using gcc but uses Autoconf and Make to configure the correct library paths and includes. The external libraries are dynamically linked with KoMoDo, this means that the user must first install the KoMoDo dependencies.
 
@@ -55,12 +56,12 @@
   \sssctn{Backups}
   GitHub hosts Git which is a distributed version control system and the primary form of backup. Along with GitHub backups are regularly made to Google drive and Dropbox, with the GitHub backup always being the most up-to-date. Git branches are used to test and work on features which are in progress, this keeps the Master branch functional. Finally, minor changes are often committed so that a full log of the progress is maintained.
 
-  \sssctn{Progress management}
+  \sssctn{Progress Management}
   A Kanban is used to track features through the inception/implementation/testing/complete phases. Regular sprints are used typically taking place from Wednesday through to Saturday. The sprints are for both the documentation and code. The overall progress is monitored using a Gantt chart.
   %Vim for text editing
   %built on an Intel Nuc
   %
-  \ssctn{Project management}
+  \ssctn{Project Management}
   Project management is an important part of the software development pipeline. But software projects are subject to failure due to several factors \cite{software_failure}:
   \itm{
     \item Unrealistic project goals
@@ -77,23 +78,67 @@
   %
   Finally, regular meetings with everyone involved in the project meant they were kept up-to-date. This provided a great deal of flexibility and trust to be established by both parties.
 
-  \ssctn{Implementation of software}
+  \ssctn{Implementation of Software}
   Software development was carried out with the best coding practices in mind. Additionally, it was important to develop code which was inline with the current style, this would enable future developers to more readily become accustomed to the already in-place coding practices.
   \sssctn{Prototype}
   The prototype can be thought of as the current version of KoMoDo. Modifications to the UI and functionality are derived from the intended design changes. Additionally, new features which were discussed as part of the requirements are part of the final working product. The actual duration of the prototyping phase extends from the initial research into KoMoDo's inner workings all the way up to the start of the implementation. \\\\
   %
   The breadth of the prototyping phase is due to the nature of the project, it is crucial to understand how the components already existent in KoMoDo interact and their implications. Furthermore, it was important to fully develop an idea of what KoMoDo already had in place. There are many features in KoMoDo that, due to the convoluted UI, are obfuscated.
   \sssctn{Final product}
-
+  Changes to KoMoDo were made using scarce GTK1 documentation and by using the existing code as reference. The logic used to make the changes may well not be optimal, but given the resources were the best.\\\\
+  \bld{\large{User Interface\\\\}}
   % Reworked the UI
+  As one of the primary areas of improvement the user interface was reworked first. Emphasis was put into replacing unnecessary text with images, thereby reducing the clutter. KoMoDo's own hard coded UI was the baseline for understanding \itl{GTK1} because the documentation was so sparse.
+  %
+  \fig{\centering\img{0.5}{kmdmain}}{New KoMoDo UI}{kmdnew}
+  %
+  During the design stages another issue that was identified was the density of the tool bar and the obscurity of the program control `multi-step' and `walk'. Steps were taken to reduce the visual impact of the toolbar and increase the clarity of both `multi-step' and `walk'.\\\\
+  %
+  The revamped visuals follow the standard design patterns for similar programs; providing a more intuitive experience.\\\\
+  %
+  \bld{\large{Breakpoints}}
+  \fig{\centering\img{0.5}{kmdmemory}}{Breakpoints in memory}{kmdmemory}
   % Reworked the breakpoint display in the main memory window
+  Breakpoints in the original KoMoDo were obscure and rarely used by new students. To increase their usage a particular effort was made to bring their styling inline with other common debuggers. Additionally, their explicit usage is now detailed in the KoMoDo beginners guide.\\\\
+  %
+  \bld{\large{Register Display\\\\}}
   % Reworked the register display to make it clearer what change had occured
+  \fig{\centering\img{0.5}{kmdreg}}{Memory notifications}{kmdregister}
+  When debugging an application intricate details can often be missed. To alleviate this problem the register pane was changed to highlight changes which occur during the programs execution. Highlighting the changes provides user's with additional information so that they are made aware of an instructions exact actions.\\\\
+  %
+  \bld{\large{Loading Source Files\\\\}}
   % Reworked how code is opened
+  KoMoDo's original UI used a manually driven two step process by which, source files were converted to a \func{KMD} format and then finally loaded. The potential reason for using this two step process was that \func{KMD} files could be loaded without the need for an initial compilation step. However, this method of opening files was arduous and counter intuitive. The reworked version now does away with this two step process opening either the source or \func{KMD} file. Additionally, a reload button was added which reloads the previously loaded source file. The reload button allows user's to quickly reload code that they had edited in a text editor.\\\\
+  %
+  \bld{\large{KoMoDo Installation\\\\}}
+  Parts of the build process have been updated to easily setup a base system. This base system now provides the AASM, used to compile the source file into a \func{KMD} file and the compile script; which KoMoDo looks for to compile sources. The addition of these files provides users with the ability to begin writing and debugging ARM32 straight after installation\footnote{provided they can get gtk and glib installed}. Additionally, KoMoDo's configuration files are now stored in the standard Linux configuration path.\\\\
   % Reworked requirements for installation
+  %
+  \bld{\large{Automatic Config Creation\\\\}}
+  Upon attempting to launch KoMoDo for the first time unless \func{kmd -c} was issued prior to launching the actual application KoMoDo would not start. The requirement to manually force config creation degrades the user experience. To allay the issue KoMoDo will now automatically create the configuration files if one did not exist.\\\\
+  %
+  \bld{\large{Memory Visualisation\\\\}}
+  For students and power user's to better understand the memory impact of their code memory visualisation was introduced. The visualisation highlights areas where code exists. Additionally, users can use this memory visualisation to draw images using their code much like figure FIGURE HERE.\\\\
+  %
+  \bld{\large{Bug Fix: Orphaned Jimulator\\\\}}
+  A rather prolific bug which has struck countless students is the orphaned \itl{Jimulator} process. The process remains running even when KoMoDo had crashed, eventually leading to an army of orphaned processes. The fix for this bug relies on the Linux kernel to notify and kill the orphaned process.\\\\
+  %
+  \bld{\large{Bug Fix: Jimulator Incorrectly Resolved Upon Installation\\\\}}
+  On installation, when attempting to run KoMoDo, if the \itl{Jimulator} was not in the current working directory KoMoDo would halt. This bug occurs due to the way KoMoDo resolved the \itl{Jimulator} binary, it would only look in the current working directory. To fix this, KoMoDo now starts the \itl{Jimulator} by resolving it using the bash environment. This won't work if the folder containing the \itl{Jimulator} is not in the \func{\$PATH} variable.\\\\
+  % Jimulator being resolved incorrectly
+  %
+  \bld{\large{Bug Fix: Phantom Second Memory Scrollbar\\\\}}
+  Upon resizing the window, if the frame became too narrow a phantom scrollbar would appear with no apparent use. This fix was trivial, through the countless iterations of KoMoDo, between its initial inception and the addition of a range based scrolling system, the developer must have forgotten the type of container which the memory window was added to. Directly adding the memory window to the parent container fixed the phantom scrollbar.\\\\
+  %
+  \bld{\large{Additions: Virtual Machine Image\\\\}}
+  To provide alternative access to KoMoDo offline, a VM image running Centos 7 was created via \itl{Virtual Box}. This image has a pre-built version of KoMoDo setup and running. User's must install \itl{Virtual Box} and run the image to begin using KoMoDo. Using KoMoDo this way removes the need for individuals to locate the legacy dependencies \itl{GTK1} and \itl{GLib-1.2}. Additionally, it can be run on multiple operating systems.\\\\
+  %
+  \bld{\large{Additions: Beginners Guide\\\\}}
+  In an effort to further demystify KoMoDo an extensive beginners guide was developed. The beginners guide details the features within KoMoDo and how to use them.
   % Bug fixes:
   % Jimulator being orphaned
   % Installation missing required files for KoMoDo to use arm
-  % Jimulator being resolved incorrectly
+
   % Implemented memory visualisation
   % usage additions:
   % Created stand-alone VM which students can aquire and use
