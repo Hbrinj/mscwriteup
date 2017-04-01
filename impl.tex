@@ -86,7 +86,7 @@
   The breadth of the prototyping phase is due to the nature of the project, it is crucial to understand how the components already existent in KoMoDo interact and their implications. Furthermore, it was important to fully develop an idea of what KoMoDo already had in place. There are many features in KoMoDo that, due to the convoluted UI, are obfuscated.
   \sssctn{Final product}
   Changes to KoMoDo were made using scarce GTK1 documentation and by using the existing code as reference. The logic used to make the changes may well not be optimal, but given the resources were the best.\\\\
-  \bld{\large{User Interface\\\\}}
+  \bld{\medium{User Interface\\\\}}
   % Reworked the UI
   As one of the primary areas of improvement the user interface was reworked first. Emphasis was put into replacing unnecessary text with images, thereby reducing the clutter. KoMoDo's own hard coded UI was the baseline for understanding \itl{GTK1} because the documentation was so sparse.
   %
@@ -96,44 +96,44 @@
   %
   The revamped visuals follow the standard design patterns for similar programs; providing a more intuitive experience.\\\\
   %
-  \bld{\large{Breakpoints}}
+  \bld{\medium{Breakpoints}}
   \fig{\centering\img{0.5}{kmdmemory}}{Breakpoints in memory}{kmdmemory}
   % Reworked the breakpoint display in the main memory window
   Breakpoints in the original KoMoDo were obscure and rarely used by new students. To increase their usage a particular effort was made to bring their styling inline with other common debuggers. Additionally, their explicit usage is now detailed in the KoMoDo beginners guide.\\\\
   %
-  \bld{\large{Register Display\\\\}}
+  \bld{\medium{Register Display\\\\}}
   % Reworked the register display to make it clearer what change had occured
   \fig{\centering\img{0.5}{kmdreg}}{Memory notifications}{kmdregister}
   When debugging an application intricate details can often be missed. To alleviate this problem the register pane was changed to highlight changes which occur during the programs execution. Highlighting the changes provides user's with additional information so that they are made aware of an instructions exact actions.\\\\
   %
-  \bld{\large{Loading Source Files\\\\}}
+  \bld{\medium{Loading Source Files\\\\}}
   % Reworked how code is opened
   KoMoDo's original UI used a manually driven two step process by which, source files were converted to a \func{KMD} format and then finally loaded. The potential reason for using this two step process was that \func{KMD} files could be loaded without the need for an initial compilation step. However, this method of opening files was arduous and counter intuitive. The reworked version now does away with this two step process opening either the source or \func{KMD} file. Additionally, a reload button was added which reloads the previously loaded source file. The reload button allows user's to quickly reload code that they had edited in a text editor.\\\\
   %
-  \bld{\large{KoMoDo Installation\\\\}}
+  \bld{\medium{KoMoDo Installation\\\\}}
   Parts of the build process have been updated to easily setup a base system. This base system now provides the AASM, used to compile the source file into a \func{KMD} file and the compile script; which KoMoDo looks for to compile sources. The addition of these files provides users with the ability to begin writing and debugging ARM32 straight after installation\footnote{provided they can get gtk and glib installed}. Additionally, KoMoDo's configuration files are now stored in the standard Linux configuration path.\\\\
   % Reworked requirements for installation
   %
-  \bld{\large{Automatic Config Creation\\\\}}
+  \bld{\medium{Automatic Config Creation\\\\}}
   Upon attempting to launch KoMoDo for the first time unless \func{kmd -c} was issued prior to launching the actual application KoMoDo would not start. The requirement to manually force config creation degrades the user experience. To allay the issue KoMoDo will now automatically create the configuration files if one did not exist.\\\\
   %
-  \bld{\large{Memory Visualisation\\\\}}
+  \bld{\medium{Memory Visualisation\\\\}}
   For students and power user's to better understand the memory impact of their code memory visualisation was introduced. The visualisation highlights areas where code exists. Additionally, users can use this memory visualisation to draw images using their code much like figure FIGURE HERE.\\\\
   %
-  \bld{\large{Bug Fix: Orphaned Jimulator\\\\}}
+  \bld{\medium{Bug Fix: Orphaned Jimulator\\\\}}
   A rather prolific bug which has struck countless students is the orphaned \itl{Jimulator} process. The process remains running even when KoMoDo had crashed, eventually leading to an army of orphaned processes. The fix for this bug relies on the Linux kernel to notify and kill the orphaned process.\\\\
   %
-  \bld{\large{Bug Fix: Jimulator Incorrectly Resolved Upon Installation\\\\}}
+  \bld{\medium{Bug Fix: Jimulator Incorrectly Resolved Upon Installation\\\\}}
   On installation, when attempting to run KoMoDo, if the \itl{Jimulator} was not in the current working directory KoMoDo would halt. This bug occurs due to the way KoMoDo resolved the \itl{Jimulator} binary, it would only look in the current working directory. To fix this, KoMoDo now starts the \itl{Jimulator} by resolving it using the bash environment. This won't work if the folder containing the \itl{Jimulator} is not in the \func{\$PATH} variable.\\\\
   % Jimulator being resolved incorrectly
   %
-  \bld{\large{Bug Fix: Phantom Second Memory Scrollbar\\\\}}
+  \bld{\medium{Bug Fix: Phantom Second Memory Scrollbar\\\\}}
   Upon resizing the window, if the frame became too narrow a phantom scrollbar would appear with no apparent use. This fix was trivial, through the countless iterations of KoMoDo, between its initial inception and the addition of a range based scrolling system, the developer must have forgotten the type of container which the memory window was added to. Directly adding the memory window to the parent container fixed the phantom scrollbar.\\\\
   %
-  \bld{\large{Additions: Virtual Machine Image\\\\}}
+  \bld{\medium{Additions: Virtual Machine Image\\\\}}
   To provide alternative access to KoMoDo offline, a VM image running Centos 7 was created via \itl{Virtual Box}. This image has a pre-built version of KoMoDo setup and running. User's must install \itl{Virtual Box} and run the image to begin using KoMoDo. Using KoMoDo this way removes the need for individuals to locate the legacy dependencies \itl{GTK1} and \itl{GLib-1.2}. Additionally, it can be run on multiple operating systems.\\\\
   %
-  \bld{\large{Additions: Beginners Guide\\\\}}
+  \bld{\medium{Additions: Beginners Guide\\\\}}
   In an effort to further demystify KoMoDo an extensive beginners guide was developed. The beginners guide details the features within KoMoDo and how to use them.
   % Bug fixes:
   % Jimulator being orphaned

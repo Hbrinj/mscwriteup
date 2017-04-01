@@ -1,0 +1,27 @@
+...
+==12392== 21 bytes in 1 blocks are definitely lost in loss record 1,371 of 2,987
+==12392==    at 0x4C2AF1F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==12392==    by 0x5E87074: g_malloc (in /usr/lib/libglib-1.2.so.0.0.10)
+==12392==    by 0x5E90196: g_strdup (in /usr/lib/libglib-1.2.so.0.0.10)
+==12392==    by 0x40BA77: load_source (callbacks.c:920)
+==12392==    by 0x40BB59: callback_button_open_file (callbacks.c:948)
+==12392==    by 0x4F12F3F: ??? (in /usr/lib/libgtk-1.2.so.0.9.1)
+==12392==    by 0x4F1347A: ??? (in /usr/lib/libgtk-1.2.so.0.9.1)
+==12392==    by 0x4F14074: gtk_signal_emit (in /usr/lib/libgtk-1.2.so.0.9.1)
+==12392==    by 0x4E78B27: ??? (in /usr/lib/libgtk-1.2.so.0.9.1)
+==12392==    by 0x4F131B2: ??? (in /usr/lib/libgtk-1.2.so.0.9.1)
+==12392==    by 0x4F14074: gtk_signal_emit (in /usr/lib/libgtk-1.2.so.0.9.1)
+==12392==    by 0x4E7895B: ??? (in /usr/lib/libgtk-1.2.so.0.9.1)
+...
+==12392== LEAK SUMMARY:
+==12392==    definitely lost: 972 bytes in 11 blocks
+==12392==    indirectly lost: 1 bytes in 1 blocks
+==12392==      possibly lost: 22,400 bytes in 2 blocks
+==12392==    still reachable: 2,022,042 bytes in 15,575 blocks
+==12392==         suppressed: 0 bytes in 0 blocks
+==12392== Reachable blocks (those to which a pointer was found) are not shown.
+==12392== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12392==
+==12392== For counts of detected and suppressed errors, rerun with: -v
+==12392== Use --track-origins=yes to see where uninitialised values come from
+==12392== ERROR SUMMARY: 20 errors from 17 contexts (suppressed: 0 from 0)
