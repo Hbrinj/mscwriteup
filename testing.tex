@@ -1,13 +1,14 @@
 % !TEX root = ./main.tex
 \sctn{Testing}
-KoMoDo was extensively tested so that first and foremost, no new bugs were introduced and secondly, any pre-existing bugs were removed. Additionally, KoMoDo informally underwent both application and user testing constantly to validate the changes, with only the results of the final round being recorded.
-The final round of testing consisted of three stages. System profiling, where KoMoDo was executed using \itl{Valgrind} and \itl{Perf} to detect memory leaks and bottlenecks. Application testing, to determine if the existing and new features all work to a reasonable standard. Finally, user testing, to determine if KoMoDo's changes were valid.\\\\
+KoMoDo was extensively tested so that first and foremost, no new bugs were introduced and secondly, any pre-existing bugs were removed. Additionally, KoMoDo informally underwent both application and usability testing to constantly validate any changes. Only the results of the final round of application and usability testing are recorded.\\\\
+%
+The final round of testing consisted of three stages. System profiling, where KoMoDo was executed using \itl{Valgrind} and \itl{Perf} to detect memory leaks and bottlenecks. Application testing, to determine if the existing and new features all work to a reasonable standard. Finally, usability testing, to determine if KoMoDo's changes were valid.\\\\
 %
 Performance profiling provides developers with information about the runtime of their application. In particular, it was important to profile KoMoDo to ensure that it performs to a high standard on both university and student machines. Of the many profiling methods, two were used, memory checking and performance analysis. Memory checking looks for poor memory management which can introduce memory leaks. Performance analysis looks at the runtime behaviour of the application, providing a breakdown of CPU intensive sections of code.\\\\
 %
 Application testing was carried out throughout KoMoDo's development, thereby quickly fixing any bugs during the early iterations of development. Any failures are noted in the test-table in the Appendix. Fixes to issues encountered are provided below the original test. Once KoMoDo was complete the tests were executed for a final time to ensure the finished software worked to a high standard. Although the requirements for KoMoDo changed during the development phase, the tests ensured that the new requirements were met.\\\\
 %
-User testing was informally carried out through the design cycle. By user testing early, KoMoDo's user-interface and user-experience could be better improved. The final round of user testing provides a series of simple tasks which user's need to carry out. The tasks were given to a variety of people.\\\\
+Usability testing was informally carried out through the design cycle. By testing early, KoMoDo's user-interface and user-experience could be better improved. The final round of usability testing provides a series of simple tasks which user's need to carry out. The tasks were given to a variety of people.\\\\
 %
 A suitable test-bench was constructed to carry out the profiling. The test bench and one other system were used for the application testing. System 2 executed KoMoDo inside a virtual machine.\\\\
 \bld{\medium{Test-bench}}
@@ -28,7 +29,7 @@ A suitable test-bench was constructed to carry out the profiling. The test bench
   \item Operating system: Windows 10 Pro, AMD16, latest stable iteration
 }
 
-\ssctn{Application profiling}
+\ssctn{Application Profiling}
 Profiling the memory was done using a piece of software called \itl{Valgrind}. \itl{Valgrind} is a suite which provides various profiling techniques, for KoMoDo, memcheck was used to identify potential memory leaks. \itl{Perf} was used to detail the performance impact of running KoMoDo and identify system bottlenecks. Note, the profiling is done only on KoMoDo and not on the \itl{Jimulator} although, \itl{Perf} will also profile calls to the \itl{Jimulator}. To fairly evaluate KoMoDo's performance a test path was created as shown in Figure \ref{fig: testpath}. The path covers the typical tasks which user's would perform.
 %
 \fig{
@@ -70,7 +71,7 @@ Profiling the memory was done using a piece of software called \itl{Valgrind}. \
 		\end{tikzpicture}
 		}{Test path}{testpath}
 %
-\sssctn{Memory profiling}
+\sssctn{Memory Profiling}
 Memory profiling identified two instances within KoMoDo which produced memory leaks. One was because an unfreed call \func{g\_strdup} and the other, an unfreed call to \func{g\_strconcat}. Additionally, there were many memory leaks in \itl{GTK1}, which could not be fixed. The leaks in \itl{GTK1} are inline with the rationale behind deprecating some of the original features for being poorly implemented.
 \fig{
   \centering
@@ -81,7 +82,7 @@ Memory profiling identified two instances within KoMoDo which produced memory le
 %
 No other leaks were identified within KoMoDo.
 %
-\sssctn{CPU profiling}
+\sssctn{CPU Profiling}
 The CPU profiling produced expected results. From Figure \ref{fig: cpuprof} it can be seen that the majority of the cycles are spent on the libraries KoMoDo is built on. KoMoDo overall doesn't have a large resource footprint and any optimizations would be premature and unnecessary.
 \fig{
   \centering
@@ -97,4 +98,27 @@ In summary, running \itl{Valgrind} provided insight into the poor coding standar
 %
 %
 %
-\ssctn{Application testing}
+\ssctn{Usability Testing}
+Regular usability testing validates any changes made to the application and, any issues are fed back for the next iteration of software. It was important to decide on a number of participants to maximise coverage of users. However, testing using a large set of participants is not feasible. To combat the lack of resources, a subset of participants were chosen, each participant is a representation of a part of the demographic that KoMoDo is aimed at.\\\\
+%
+Five participants were chosen to take part in the study. The decision to use 5 participants was due to the findings outline by Jakob Nielson \cite{usability_engineer}. Jakob Nielson found that more than 5 participants provided no more findings than the initial five. However, this is dependant on the task and what is being researched. For usability testing of KoMoDo five participants are enough.
+%
+\sssctn{Participants}
+The participants were chosen based on their previous experience with KoMoDo. A range of users were chosen to best test how intuitive they find the new user interface.
+\begin{center}
+\begin{tabular}{| l |  p{1cm} | p{4cm} | p{4cm} | }
+		\hline
+		Participant & Age & Technical Knowledge & KoMoDo knowledge \\ \hline
+		1 & 19 & Sufficient & Basic \\ \hline
+		2 & 25 & Basic & Basic \\ \hline
+		3 & 22 & Advanced & Advanced \\ \hline
+		4 & 23 & Advanced & Sufficient \\ \hline
+		5 & 21 & Sufficient & Advanced \\ \hline
+\end{tabular}
+\end{center}
+
+\sssctn{Tasks}
+Tasks were created that encapsulated the UI requirements as well as the new features. The participant was given a short questionnaire at the end, once all tasks were performed. The aim of the questionnaire was to determine how easily they were able to complete the tasks. The easier they found the tasks, the more intuitive the new design would be.\\\\
+\bld{\medium{Task 1\\}}
+\bld{\medium{Task 2\\}}
+\bld{\medium{Task 3\\}}

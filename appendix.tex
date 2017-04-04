@@ -1,0 +1,212 @@
+% !TEX root = ./main.tex
+\begin{landscape}
+	\newgeometry{left=2cm,bottom=-0.5cm,top=9.1cm}
+	\sctn{Testing}
+	\ssctn{Application Testing}
+  \gdef\rownumber{\stepcounter{magicrownumbers}\arabic{magicrownumbers}}
+	\label{apptest}
+	\begin{center}
+		\begin{tabular}{| @{\makebox[2em][c]{\rownumber\space}} | p{4cm} |  p{5cm} | p{5cm} | p{5cm} | l |}
+			\hline
+      Input & Precautions & Expected outcome & Actual outcome & Result \\ \hline
+			%
+			% & & & & & \\ \hline
+			%
+			Start application & -  & The application starts in emulation mode. & The application starts in emulation mode. & Pass. \\ \hline
+			%
+			Scroll memory & - & Memory is scrollable and loops back at ranges & Memory is scrollable and loops back at ranges & Pass. \\ \hline
+      %
+      Switch register banks & - & Register bank can be changed. & Register bank can be changed. & Pass. \\ \hline
+      %
+      Switch flags & - & Flags easily switched. & Flags easily switched. & Pass.\\ \hline
+      %
+      Change register value & - &Register value changed. & Register value changed. & Pass.\\ \hline
+      %
+      Set/unset a flag & - & Flag unset. & Flag unset. & Pass. \\ \hline
+      %
+      File \rarr Open & Menubar open & Open file dialog. & Open file dialog. & Pass.\\ \hline
+      %
+      File \rarr Reload & Menubar open & File is reload and compiled if needed. & File is reload and compiled if needed. & Pass. \\ \hline
+      %
+      Actions \rarr Run & Menubar open & Open sourced is run. & Open sourced is run. & Pass. \\ \hline
+      %
+      Actions \rarr Pause & Menubar open & Running source is paused. & Running source is paused. & Pass. \\ \hline
+      %
+      Actions \rarr Stop & Menubar open & Running source is stopped and reset. & Running source is stopped and reset. & Pass. \\ \hline
+      %
+      Actions \rarr Ping & Menubar open & Board pinged. & Board pinged. & Pass. \\ \hline
+      %
+      Actions \rarr Single-step & Menubar open & Code is stepped by 1. & Code is stepped by 1. & Pass. \\ \hline
+      %
+      Actions \rarr Multi-step \rarr steps in input & Menubar open & Code is stepped as in input box. & Code is stepped as in input box. & Pass. \\ \hline
+      %
+      Actions \rarr Multi-step \rarr 10 steps& Menubar open & Code stepped by 10. & Code stepped by 10. & Pass.\\ \hline
+      %
+      Actions \rarr Multi-step \rarr 100 steps & Menubar open & Code stepped by 100. & Code stepped by 100. & Pass. \\ \hline
+      %
+      Actions \rarr Multi-step \rarr 1000 steps & Menubar open & Code stepped by 1000. & Code stepped by 1000. & Pass. \\ \hline
+      %
+      Actions \rarr Multi-step \rarr 10,000 steps & Menubar open & Code stepped by 10,000. & Code stepped by 10,000. & Pass. \\ \hline
+      %
+      Actions \rarr Multi-step \rarr 100,000 steps & Menubar open & Code stepped by 100,000. & Code stepped by 100,000. & Pass. \\ \hline
+      %
+      Actions \rarr Multi-step \rarr 1,000,000 steps & Menubar open & Code stepped by 1,000,000. & Code stepped by 1,000,000. & Pass.\\ \hline
+      %
+    	\end{tabular}
+	\end{center}
+%
+\begin{center}
+  \begin{tabular}{ | @{\makebox[2em][c]{\rownumber\space}} | p{4cm} |  p{5cm} | p{5cm} | p{5cm} | l |}
+    \hline
+    Input & Precautions & Expected outcome & Actual outcome & Result \\ \hline
+    %
+    Actions \rarr walk \rarr Steps in input & Menubar open & Source is stepped based on input. & Output is stepped based on input. & Pass. \\ \hline
+    %
+    Actions \rarr walk \rarr 1 step at a time & Menubar open & Source is stepped one at a time. & Source is stepped one at a time. & Pass. \\ \hline
+    %
+    Actions \rarr walk \rarr 10 step at a time & Menubar open & Source is stepped 10 at a time. & Source is stepped 10 at a time. & Pass. \\ \hline
+    %
+    Actions \rarr walk \rarr 100 step at a time & Menubar open & Source is stepped 100 at a time. & Source is stepped 100 at a time. & Pass. \\ \hline
+    %
+    Actions \rarr walk \rarr 1000 step at a time & Menubar open & Source is stepped 1000 at a time. & Source is stepped 1000 at a time. & Pass. \\ \hline
+    %
+    Actions \rarr toggle refresh & Menubar open & Refresh is toggled. & Refresh is toggled. & Pass. \\ \hline
+    %
+    Special \rarr Breakpoints & Menubar open & Show advanced breakpoint window. & Shown advanced breakpoint window. & Pass. \\ \hline
+    %
+    Special \rarr Simple Breakpoints & Menubar open & Show simple breakpoint window. & Shown simple breakpoint window. & Pass. \\ \hline
+    %
+    Special \rarr Watchpoints & Menubar open & Show advanced watchpoint window. & Shown advanced watchpoint window. & Pass. \\ \hline
+    %
+    Special \rarr Simple Watchpoints & Menubar open & Show simple watchpoint window.  & Shown simple watchpoint window. & Pass. \\ \hline
+    %
+    Special \rarr Memory Window & Menubar open & Show memory window. & Shown memory window. & Pass. \\ \hline
+    %
+    Special \rarr Source window & Menubar open & Show source window & Shown source window. & Pass. \\ \hline
+    %
+    Special \rarr Symbol window & Menubar open & Show symbol window & Shown Symbol window & Pass. \\ \hline
+    %
+    Special \rarr Mem vis & Menubar open & Show mem vis & Shown mem vis & Pass. \\ \hline
+    %
+    Special \rarr Features & Menubar open & Show Features window & Shown Features window & Pass. \\ \hline
+    %
+    Reg. Bank \rarr any option & Menubar open & Switch Reg. bank & Switched current Reg. bank & Pass. \\ \hline
+    %
+    Flags \rarr any option & Menubar open & Switches flags & Switches flags & Pass. \\ \hline
+    %
+    Help \rarr about & Menubar open & Opens about window & Opens about window & Pass. \\ \hline
+    %
+    Open Button & - & Open file dialog & Open file dialog & Pass. \\ \hline
+    %
+    Reload button & - & Opened source is reloaded & Opened source is reloaded & Pass. \\ \hline
+    %
+    Features button & - & Show features window & Shown features window & Pass. \\ \hline
+    %
+    Play button & - & Run source & Runs source & Pass. \\ \hline
+    %
+    Pause button & - & Pauses execution of source & Pauses execution of source & Pass. \\ \hline
+    %
+    Stop button & - & Stops and resets execution of source & Stops and resets execution of source & Pass. \\ \hline
+    %
+    Refresh button & - & Button is toggled & Button is toggled & Pass. \\ \hline
+    %
+    \end{tabular}
+\end{center}
+%
+\begin{center}
+  \begin{tabular}{ | @{\makebox[2em][c]{\rownumber\space}} | p{4cm} |  p{5cm} | p{5cm} | p{5cm} | l |}
+    \hline
+    Input & Precautions & Expected outcome & Actual outcome & Result \\ \hline
+  Single-step button & - & Source is single stepped & Source is single stepped & Pass. \\ \hline
+  %
+  Multi-step button & - & Source is stepped based on input box & Source is stepped based on input box & Pass. \\ \hline
+  %
+  Timed walk button & - & Source is walked based on input box & Source is walked based on input box & Pass. \\ \hline
+  %
+  Multi-step input & - & Value can be manually changed & Value can be manually changed & Pass. \\ \hline
+  %
+  Multi-step input & - & Value can be changed using buttons & value changed using buttons & Pass. \\ \hline
+  %
+  Timed walk input & - & Value can be manually changed & Value can be manually changed & Pass. \\ \hline
+  %
+  Timed walk input & - & Value can be changed using buttons & Value can be changed using buttons & Pass. \\ \hline
+  %
+  Breakpoint checkbox & - & Activates/deactivates Breakpoints & Activates/deactivates Breakpoints & Pass. \\ \hline
+  %
+  Watchpoint checkbox & - & Activates/deactivates Watchpoints & Activates/deactivates Watchpoints & Pass. \\ \hline
+  %
+  SWI checkbox & - & Enters software interrupt & Enters software interrupt & Pass. \\ \hline
+  %
+  BL checkbox & - & Enters sub-routine & Enters sub-routine & Pass. \\ \hline
+  %
+  Abort checkbox & - & Enters bad memory exception code & Enters bad memory exception code & Pass. \\ \hline
+  %
+  IRQ checkbox & - & Automatically executes interrupt & Automatically executes interrupt & Pass. \\ \hline
+  %
+  FIQ checkbox & - & Automatically executes FIQ code & Automatically executes FIQ code & Pass. \\ \hline
+  %
+  Memory window single step & - & Single steps the code & Single steps the code & Pass. \\ \hline
+  %
+  Address jump input & - & Jumps to memory address & Jumps to memory address & Pass. \\ \hline
+  %
+  Full source checkbox & - & Toggles between full and partial source & Toggles between full and partial source & Pass. \\ \hline
+  %
+  Symbols checkbox & - & Toggles between showing/not showing symbols & Toggles between showing/not showing symbols & Pass. \\ \hline
+  %
+  Status bar: Mode & KoMoDo started using -e flag & Shows KoMoDo in emulation mode & Shows KoMoDo in emulation mode & Pass. \\ \hline
+  %
+  Status bar: State & Any actions involving the code & State changes when program controls are used & State changes when program controls are used & Pass. \\ \hline
+  %
+  Status bar: Total steps & during execution & Shows \# of steps taken & Shows \# of steps taken & Pass. \\ \hline
+  %
+  Status bar: Load Progress & After open dialog & Shows progress status when loading source & Shows progress status when loading source & Pass. \\ \hline
+  %
+  \end{tabular}
+  \end{center}
+  \begin{center}
+  \begin{tabular}{ | @{\makebox[2em][c]{\rownumber\space}} | p{4cm} |  p{5cm} | p{5cm} | p{5cm} | l |}
+      \hline
+      Input & Precautions & Expected outcome & Actual outcome & Result \\ \hline
+      %
+      KoMoDo console window & During source loading & Shows output from compilation and any errors & Shows output from compilation and any errors & Pass. \\ \hline
+      %
+      Memory window: tabs & - & Increases the size of the tabs in the memory window & Increases the size of the tabs in the memory window & Pass. \\ \hline
+      %
+      Memory window: Up button & - & Scrolls up & Scrolls up & Pass. \\ \hline
+      %
+      Memory window: Down button & - & Scrolls down & Scrolls down & Pass. \\ \hline
+      %
+      Memory window: Add breakpoint & line does not already have breakpoint & Breakpoint added & Breakpoint added & Pass.\\ \hline
+      %
+      Memory window: Remove breakpoint & Line has breakpoint & Breakpoint removed & Breakpoint removed & Pass.\\ \hline
+      %
+      Memory window: Slider & - & Moves memory when moved up or down & Moves memory when moved up or down & Pass.\\ \hline
+      %
+      Memory window: Scroll & - & Moves memory window & Moves memory window & Pass.\\ \hline
+      %
+      Terminal: running source & Features pressed in emulation mode & SWI3's print to terminal & SWI3's print to terminal & \\ \hline
+      %
+      Terminal: clear button & Features pressed in emulation mode & Button clears view & Button clears view & Pass.\\ \hline
+      %
+      Terminal: Active checkbox & Features pressed in emulation mode & toggles printing output to terminal & toggles printing output to terminal & Pass.\\ \hline
+      %
+      Memvis: close & Memvis open & Closes memory visualisation & Closes memory visualisation & Pass.\\ \hline
+      %
+      Memvis: memory visual & Memvis open & Shows taken sectors & Shows taken sectors & Pass.\\ \hline
+      %
+      Symbol table & Symbol table open & Shows list of symbols & Shows list of symbols & Pass.\\ \hline
+      %
+      File compiled and loaded & Open file dialog & File is compiled and loaded after it is selected &File is compiled and loaded after it is selected & Pass. \\ \hline
+      %
+      Unknown file & Open file dialog & Unknown format not compiled or loaded showing dialog box & Unknown format not compiled or loaded showing dialog box & Fail. \\ \hline
+      %
+      Unknown file & Open file dialog & Unknown format not compiled or loaded showing dialog box & Unknown format not compiled or loaded showing dialog box & Pass. \\ \hline
+      %
+      & & & & \\ \hline
+      %
+      & & & & \\ \hline
+      %
+  \end{tabular}
+  \end{center}
+  \restoregeometry
+	\end{landscape}

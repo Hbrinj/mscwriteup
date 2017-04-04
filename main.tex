@@ -11,6 +11,7 @@
 \usepackage{calc}
 \usepackage{enumitem}
 \usepackage{varwidth}
+\usepackage{array,etoolbox}
 \usetikzlibrary{patterns}
 \usetikzlibrary{calc}
 \usetikzlibrary{decorations.pathmorphing}
@@ -41,7 +42,13 @@
 \parbox[b]{8em}{\hfill{\color{black}\bfseries\sffamily #1}~$\cdots\cdots$~}\makebox[0pt][c]
 {$\bullet$}\vrule\quad \parbox[c]{12.5cm}
 {\vspace{8pt}\color{black!40!black!80}\raggedright\sffamily #2.\\[15pt]}\\[-3pt]}
-\newcommand{\kmd}{KoMoDo}
+\newcounter{magicrownumbers}
+\setcounter{magicrownumbers}{0}
+\def\rownumber{}
+
+\newcounter{rowno}
+\setcounter{rowno}{0}
+
 
 \title{KoMoDo++: An enhanced assembler-level development environment for the 32-bit ARM chip}
 \author{Houman Brinjcargorabi\\Supervised by Prof. David Brailsford\\\\\includegraphics[scale=0.4]{UoN_arms}}%
@@ -87,6 +94,6 @@ Over time KoMoDo has become dated and component packages that were once in their
 %\include{reflection}
 %\bibliographystyle{plainnat}
 %\bibliography{./biblio}
-%\include{appendix}
+\include{appendix}
 
 \end{document}
