@@ -1,0 +1,39 @@
+% !TEX root = ./main.tex
+\sctn{Reflection}
+\ssctn{Problems Encountered}
+Problems in software development projects are inevitable. Carefully planning the time required for each task provided a cushion in case of unforeseen circumstances. This cushion allowed me to work around my inexperience with porting software. Additionally, my inexperience required a change to the requirements, however, due to carefully planning I had enough time to comfortably complete the required tasks.\\\\
+%
+The research stage provided me with the opportunity to alleviate some of my inexperience. By researching around KoMoDo my aim was to make an educated decision regarding how best to improve it. However, it is clear to me now that my focus should have been on understanding the intricacies of porting software. This lack of understanding translated poorly in the implementation stage were, several of the problems with porting legacy software was identified. I do believe however, that in the future when encountering legacy software I can better identify the potential problems that development will face.\\\\
+%
+Looking into and documenting KoMoDo was no easy task, countless hours were spent deciphering the cryptic comments or lack there of. I believe that without \itl{GDB}, the GNU Debugger, I would not have understood the convoluted mess that is KoMoDo. From the layout and style of the code it became ever more clear that it was implemented by a single person, over some time. Variables and functions were occasionally in incorrect header files and KoMoDo was rife with comments like `What does this even do? Magic.'. I do believe however, that thanks to the vague or non-existent comments and \itl{GDB}, I have become better at reading and understanding code. Additionally, I have honed in my skills as a `chameleon' programmer, writing code which mimics the standards of the source.\\\\
+%
+\itl{GTK1's} documentation has been purged from the internet, this made implementation using \itl{GTK1} very difficult. There exists a small number websites with a subset of the original documentation, these combined with what was already written in KoMoDo allowed me implement new features. Additionally, I used the \itl{GTK2} documentation to supplement what certain functions should do. The process of understanding and using the \itl{GTK1} API was time consuming and laborious, but doing so provided me with the relevant knowledge to carry out the necessary work.\\\\
+%
+Newer iterations of \itl{GTK} use the UI generation software, \itl{Glade} to design and implement the UI. KoMoDo was built before \itl{Glade's} inception. Consequently, the UI in KoMoDo is hard coded, and uses the \func{.komodo} config file to determine what is drawn to the main view. When attempting to move to \itl{GTK2} it became evident that the UI would need to be developed using \itl{Glade}. On top of \itl{Glade} consistently crashing, the new UI meant that a lot of the existing features in KoMoDo would need to be permanently disabled. They would need to be disabled due to the static structure of the \itl{Glade} files not allowing dynamic UI changes. The loss of features further pushed me into using \itl{GTK1}.
+%
+%
+%
+%
+\ssctn{Personal Reflection}
+I was drawn to this project because of the insight and understanding that the first year module, G51CSA provided me. As a developer the module allowed me to take into consideration the machine level results of my programming decisions. I felt as though KoMoDo needed to made more accessible to students so that they could also develop this intuition. As one of the key first year modules, in the Computer Science course, at the University of Nottingham, every student is exposed to KoMoDo.\\\\
+%
+I felt as though my experience until now, as a Computer Science student had best prepared me to take on this challenge. I was both right and wrong, I am able to manage my time efficiently and quickly implement software requirements. However, my lack of experience with legacy systems and porting software, made this project difficult. I was unable to see the pitfalls of moving from one API to another. Thankfully, due to my time management I was able to work around this oversight and get back on track. I think that I have now gained the relevant experience for future projects.\\\\
+%
+%how year out helped, experience with modules, c, build tools etc.
+I felt as though my year in industry at Intel helped me prepare for this project. Working at Intel exposed me to a variety of technologies and scenarios. Most notably, I worked on a large opensource project called MRAA which is on all of Intel's Internet of Things devices. Working on the project exposed me to build tools such as \itl{AutoMake}. Having prior knowledge of using \itl{AutoMake} gave me an advantage when it came to fixing some of the build issues with KoMoDo. Furthermore, working on the opensource project allowed me to gain experience looking through someone else's code, understanding what it does and writing useful documentation. All of these skills translated very well when it came to understanding how KoMoDo operated.\\\\
+%
+At University, I have had the opportunity to build interactive systems, use C and objectively evaluate my choices. All of these opportunities have given me greater insight when working with KoMoDo. Additionally, I was able to make strategic decisions about how best to advance both KoMoDo's UI and, its features so that they adhered to the requirements..\\\\
+%
+For this particular project I believe that my time management and planning skills really showed. I managed to work around and fix issues that I encountered quickly, producing a high quality piece of work. Using the Agile methodology I setup sprints each week, these sprints were based on the tasks on my Kanban. The flexibility of using sprints allowed me dynamically change my pace so that I could work on other modules when needed. The Kanban allowed me to easily track my progress through the requirements.\\\\
+%
+%Early and frequent drafts
+Although I have already submitted one dissertation, I felt as though my writing skills were still weak. This was further verified during the initial proposal by Professor David Brailsford. My personal aim during this second dissertation was to provide early and often drafts of the write-up. I was lucky that Professor David Brailsford was able to consistently provide me with feedback about my work. I believe\footnote{David may disagree} that thanks to his efforts and lectures \footnote{Many grammar lectures} I have improved my technical writing ability.
+%
+In summary, I believe that I have thoroughly applied myself doing this dissertation. I have gained valuable expertise in working with legacy systems and their complexity. Furthermore, I believe that I was able to further put into practice the skills I have gained both in industry and via University.
+%
+%
+%
+\ssctn{Future Improvements}
+I would strongly recommend against any improvements to KoMoDo, instead KoMoDo should be rebuilt from the ground up. KoMoDo shows signs of the age in which it was created, by using modern frameworks and techniques a `new' KoMoDo would last much longer. Careful planning can make KoMoDo easier to upgrade and maintain in the future.\\\\
+%
+Any improvements to KoMoDo would likely create more issues than solutions. KoMoDo was purpose made to be a generic debugger, able to work with FPGA's, ARM boards and emulators. Although it is no longer used in a production environment, these features should be kept.
