@@ -22,7 +22,7 @@ KoMoDo's front-end is written using \itl{GTK}, a Linux based UI framework. \itl{
   %
   \itl{GTK} provides a host of functionality which relies on callbacks. In particular KoMoDo makes heavy use of the \func{g\_timeout\_add()} function, in particular it uses this to update the register and program data from the \itl{Jimulator}. Using callbacks in this way has one major issue, the callback is tightly coupled with the caller, thereby reducing both extensibility and reusability.
 
-  \sssctn{Internationalization/localisation}
+  \sssctn{Internationalization/Localisation}
   \itl{GTK} attempts to make localisation easier by providing functionality that the programmer can use to translate UI text \cite{gtk_localisation}. \itl{GTK} at compile time will generate a file containing the translatable text, this can be given to translators for translation. Once translated the inclusion of the file at install time allows \itl{GTK} to pick the right string for the locale. Its built-in preprocessor directive provides wrapper code for the \func{gettext()} function. This function, at runtime, checks the user's locale and will, if available, place the correct translation into the application.
 
   % Simple callbacks to KoMoDo backend.
@@ -59,23 +59,23 @@ KoMoDo's front-end is written using \itl{GTK}, a Linux based UI framework. \itl{
 \fig{\centering\img{0.23}{atom}}{Atom, a popular text editor built using Electron}{electronatom}
 \itl{Electron} is vastly different to the other two frameworks talked about in this section. \itl{Electron} itself is a runtime environment which interprets and runs Web scripting languages such as HTML or Javascript and uses CSS for styling\cite{electron}. Web technologies in recent year have see a rise in frameworks and as such there are plenty to choose from, in particular \itl{AngularJS}, a fairly recent Web framework by Google. Due to the nature of \itl{Electron}, frameworks such as \itl{AngularJS} can be run in an application on the desktop, providing a seamless UI, written using Web technologies. Furthermore, they can be ran on the Web as a Website.
 %
-  \sssctn{Electron environment}
+  \sssctn{Electron Environment}
   \itl{Electron} uses \itl{Chromium} and Node.js to create and run applications on the desktop \cite{electron_about}. From \itl{Chromium}, \itl{Electron} uses the content module which is responsible for rendering Web pages to `host' the application, in particular \itl{Electron} interfaces with the content module through a shim called brightray\cite{electron_content_module}. A shim is a layer of abstraction which wraps differing platforms, providing a common application programming interface (API). The Node.js service provides the application logic that will be sent to the content module to be displayed.\\\\
   %
   By abstracting away the low level details and utilising already cross-compatible elements, \itl{Electron} is able to provide the same functionality regardless of platform.\footnote{But that does mean working with node.js} Furthermore, C++ code can be packaged into a node module, allowing potentially native C code wrapped in C++ to be executed.
   %
-  \sssctn{Two-way data binding}
+  \sssctn{Two-way Data Binding}
   \itl{AngularJS} is an abstraction layer on top of Javascript, it provides features which are relevant to both Web and desktop applications\cite{angular}. In particular \itl{AngularJS} provides two way data binding, this allows the data and model to be bound together\cite{angular_data_binding}. Therefore, a change in the data forces a change in the visual element without the explicit need to define a callback or slot. This is a very powerful tool, allowing faster prototyping of applications without the need for boilerplate code.
   %
-  \sssctn{CSS \& styling}
+  \sssctn{CSS \& Styling}
   CSS is nothing new and has been around for a long time, its primary use is to provide styling information for HTML files. \itl{Electron}'s use of Web technologies via an abstraction means that the CSS styling is universal, working out of the box on every platform. Theming the application is as simple as changing CSS elements. Any HTML generated for an application only needs to reference the CSS styling and the content module from \itl{Chromium} will render the result using the specified elements.\\\\
   %
   \itl{Electron} typically takes care of a platforms window system via another abstraction. Menus\cite{electron_menu} and other window elements are exposed to programmers via a standard API and aim to provide consistency across the supported platforms.
   %
-  \sssctn{Internationalization/localisation}
+  \sssctn{Internationalization/Localisation}
   Unlike our other examples neither \itl{AngularJS} nor \itl{Electron} come with an internationalization or localisation feature. But, unlike our other examples, \itl{Electron} applications are built using Web technologies and these technologies provide a variety of pluggable extensions. One such extension is Angular-translate, a dependency which can be added to an application built using Angular\cite{angular_translate}. Angular-translate then exposes similar internationalization/localisation functionality to the other application frameworks. It also has support for plural generation with templated strings.
 
-  \sssctn{Computational complexity}
+  \sssctn{Computational Complexity}
   \itl{Electron}'s choice to render using HTML and CSS and push content using Node.js comes with added complexity. Although \itl{Electron} is able to provide a plethora of useful features, it does so by trading performance for flexibility, using another component to render HTML and CSS. Alternatively, its flexibility gives the ability to transform and morph existing \itl{Electron} applications; by using a plugin system which changes or complements their typical behaviour.\\\\
   %
   Flexibility comes at a cost, the ease of using pluggable modules brings its own performance hit, especially when they are being loaded. Importing a module is a synchronous process, each module may also have its own imports, the cascading imports can potentially slow down application startup. Consequently, developers need to think deeply about how to implement their solutions.

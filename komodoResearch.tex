@@ -18,7 +18,7 @@ KoMoDo running in emulation mode starts the \itl{Jimulator}; a 32-bit ARM emulat
 %
 The command system is a primitive example of messaging systems found in modern operating systems. These systems allow for inter-process communications (IPC). KoMoDo uses the primitive IPC to update the user interface as the code is executed. This section provides an overview of the given commands, they are split into several logical subgroups which relate to their operation.
 %
-\sssctn{Status commands}
+\sssctn{Status Commands}
 %
 \fig{
   \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries \footnotesize BR\_WOT\_U\_DO}]
@@ -36,7 +36,7 @@ A \itl{BR\_WOT\_U\_DO} command is sent when performing a UI update. KoMoDo uses 
 %
 %
 %
-\sssctn{Operation commands}
+\sssctn{Operation Commands}
 \fig{
   \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries \footnotesize BR\_PAUSE \& BR\_STOP}]
     \item[\footnotesize BR\_RESET] Reset the board state, program counter and interrupts.
@@ -56,7 +56,7 @@ A \itl{BR\_WOT\_U\_DO} command is sent when performing a UI update. KoMoDo uses 
 %
 %
 %
-\sssctn{Memory commands}
+\sssctn{Memory Commands}
 \fig{
   \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries \footnotesize BR\_SET\_MEM}]
     \item[\footnotesize BR\_SET\_MEM] Set the memory at some address with some data.
@@ -76,7 +76,7 @@ KoMoDo sends \itl{BR\_GET\_MEM} when the user has clicked a row of the memory ta
 %
 %
 %
-\sssctn{Breakpoint commands}
+\sssctn{Breakpoint Commands}
 \fig{
   \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries \footnotesize BR\_BP\_WRITE}]
     \item[\footnotesize BR\_BP\_GET] Get the trap status and a bitfield representing the active breakpoints.
