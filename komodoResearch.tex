@@ -5,7 +5,7 @@ KoMoDo utilises additional software components to provide capabilities which all
 \ssctn{Keywords}
   \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries \footnotesize inter process communication}]
     \item[\footnotesize Register bank] Used to hold a set of 18 registers. KoMoDo provides 7 different register banks.
-    \item[\footnotesize Register] A register is used to hold a piece of information, it is a special type of memory contained within the CPU. ARM32 has a total of 18 registers, R0 - R14 which are the general purpose registers, a Program counter, a current program status register and a saved program status register.
+    \item[\footnotesize Register] A register is used to hold a piece of information, it is a special type of memory contained within the CPU. ARM32 has a total of 18 registers, R0 - R14 which are the general purpose registers, a Program Counter, a Current Program Status Register and a Saved Program Status Register.
     \item[\footnotesize Inter process communication] Communication between two separate processes potentially running on separate CPUs with completely separate memory.
     \item[\footnotesize (*nix) pipes] Communication highways, on *nix systems they are files placed in the processes runtime kernel folder, when a process begins it is allocated a set of file descriptors (FD) or handles. There are three FDs that are provided to new processes; a process may read from STDIN and write to  either STDOUT or STDERR.§
     \item[\footnotesize breakpoint] A concept in most modern debuggers; a breakpoint is used to halt execution when a particular memory address is reached.
@@ -39,7 +39,7 @@ A \itl{BR\_WOT\_U\_DO} command is sent when performing a UI update. KoMoDo uses 
 \sssctn{Operation Commands}
 \fig{
   \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries \footnotesize BR\_PAUSE \& BR\_STOP}]
-    \item[\footnotesize BR\_RESET] Reset the board state, program counter and interrupts.
+    \item[\footnotesize BR\_RESET] Reset the board state, Program Counter and interrupts.
     \item[\footnotesize BR\_PAUSE \& BR\_STOP] If the \itl{Jimulator} was running, stop running.
     \item[\footnotesize BR\_CONTINUE] Continue execution if the client was stepping and there are steps to go.
     \item[\footnotesize BR\_START] Start execution, in the \itl{Jimulator} this is not handled normally.
@@ -70,7 +70,7 @@ KoMoDo uses \itl{BR\_SET\_MEM} when a KMD source file has been compiled and is b
 %
 \itl{BR\_SET\_REG} is called when the user changes a register value in a specific register bank. KoMoDo sends the register value and address to the \itl{Jimulator}. Where the \itl{Jimulator} updates its internal representation\\\\
 %
-KoMoDo sends \itl{BR\_GET\_MEM} when the user has clicked a row of the memory table. This to fill the appropriate memory row with the corresponding data.\\\\
+KoMoDo sends \itl{BR\_GET\_MEM} when the user has clicked a row of the memory table. This is to fill the appropriate memory row with the corresponding data.\\\\
 %
 \itl{BR\_GET\_REG} is used as part of the update functionality of KoMoDo; an update occurs when either the program is being stepped, executed or the user has changed/clicked on a field. Consequently, \itl{BR\_GET\_REG} is sent to retrieve either a specific register or all of them.
 %
@@ -86,9 +86,9 @@ KoMoDo sends \itl{BR\_GET\_MEM} when the user has clicked a row of the memory ta
   \end{description}
 }{Jimulator breakpoint commands}{jimbreakpoints}
 %
-\itl{BR\_BP\_GET}s exact functionality is dubiousgiven that one of the values used when KoMoDo sends this command is not explicitly set or defined, anywhere. The initial understanding is that it is used to retrieve the index of one of the 32 allowed breakpoints, followed by the breakpoint status. KoMoDo will send this when determining if a toggled breakpoint has been previously set.\\\\
+\itl{BR\_BP\_GET}s exact functionality is dubious given that one of the values used when KoMoDo sends this command is not explicitly set or defined, anywhere. The initial understanding is that it is used to retrieve the index of one of the 32 allowed breakpoints, followed by the breakpoint status. KoMoDo will send this when determining if a toggled breakpoint has been previously set.\\\\
 %
-\itl{BR\_BP\_SET} is used to set one of the 32 breakpoints, here represented as a bit-field, as active and to update the status. There are two sets of information sent to the \itl{Jimulator}, the address of the breakpoint and its mask. The mask is used to check particular fields of the address, possibly allowing for multiple breakpoints to be satisfied. KoMoDo will send this to message update the trap status and breakpoint bit-field if a breakpoint has changed.\\\\
+\itl{BR\_BP\_SET} is used to set one of the 32 breakpoints, here represented as a bit-field, as active and to update the status. There are two sets of information sent to the \itl{Jimulator}, the address of the breakpoint and its mask. The mask is used to check particular fields of the address, possibly allowing for multiple breakpoints to be satisfied. KoMoDo will send this message to update the trap status and breakpoint bit-field if a breakpoint has changed.\\\\
 %
 \itl{BR\_BP\_READ} is used to read a breakpoint definition. The definitions allow finer control over when a breakpoint is activated, they work by checking if some condition is met. Typically, this command is sent by KoMoDo when a break point is activated by the user. Alternatively, if the user selects an already selected breakpoint this is sent to retrieve the previously provided information.\\\\
 %

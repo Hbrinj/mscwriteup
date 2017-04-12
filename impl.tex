@@ -12,7 +12,7 @@
     %GTK2 allows themeing via CSS, GTK1 does not, possibility to theme using qtcurve
     %Syntax highlighting requires ability to render own text
     \sssctn{Porting to GTK3}
-    The original idea was to port KoMoDo to a recent stable version of \itl{GTK}. Porting to \itl{GTK3} would have prolonged KoMoDo's shelf life. With proper maintenance KoMoDo on \itl{GTK3} could have been kept relevant for years to come. Unfortunatly, \itl{GTK3} deprecates features found in \itl{GTK2} while completely removing features that were originally deprecated in \itl{GTK2}. Moreover, \itl{GTK3} changes how widgets and various logic is used.\\\\
+    The original idea was to port KoMoDo to a recent stable version of \itl{GTK}. Porting to \itl{GTK3} would have prolonged KoMoDo's shelf life. With proper maintenance KoMoDo on \itl{GTK3} could have been kept relevant for years to come. Unfortunatly, \itl{GTK3} deprecates features found in \itl{GTK2} and completely removes features that were originally deprecated in \itl{GTK2}. Moreover, \itl{GTK3} changes how widgets and various logic is used.\\\\
     %
     At this point it was evident that \itl{GTK3} is a far stretch, with so many changes to the program flow it would be better to reimplement KoMoDo from the ground up, something which took the original creators far longer than is permitted for the scope of this project.
     %instant issues due to major API overhaul
@@ -20,7 +20,7 @@
     \sssctn{Porting to GTK2}
     \itl{GTK2} was the next target version after \itl{GTK3} proved to be far more perplexing. \itl{GTK2} allows for deprecated features to be enabled, this would allow for iterative changes to the UI without breaking everything.\\\\
     %
-    To begin with, \itl{Glade} was used to implement the UI change proposed in the design chapter. \itl{Glade} for \itl{GTK2} came with its own problems. \itl{Glade} would often crash (tested on multiple devices) the crash would cause inconsistencies within the XML interface file, forcing a redo. This was a lesson quickly learnt, due to the nature of this work version control was already in use. Consequently, regular backups after even minor changes were made.\\\\
+    To begin with, \itl{Glade} was used to implement the UI change proposed in the design chapter. \itl{Glade} for \itl{GTK2} came with its own problems. \itl{Glade} would often crash (tested on multiple devices) the crash would cause inconsistencies within the XML interface file, forcing a redo. This was a lesson quickly learnt, due to the nature of this work version control was already in use. Consequently, regular backups were made after minor changes.\\\\
     %
     Using the \itl{Glade} interface file is straightforward and only requires a few \itl{GTK} function calls. Problems arose when connecting the glade UI with the old logic, \itl{Glade} didn't allow the use of deprecated features. Therefore, it was necessary to port some of the code over to use the new treeview implementation. In a broad sense this was successful, but in actual fact it introduced buggy logic between the old \itl{GTK1} code and the new \itl{GTK2} code. Additionally, the documentation and coding style were far from desireable, it was evident from the sparse comments asking 'what does this do' that the majority of KoMoDo was implemented by a single person. Furthermore, many of KoMoDo's features needed to be disabled so that the new UI could be integrated, something that would be detrimental to KoMoDo.
     % There exists a flag which allows for deprecated features to be enabled
@@ -29,7 +29,7 @@
     % new uses treeview, using treeview causes alot of features to be dropped due to logic differences
     % alot of unkowns still exist documentation is lax,
     \sssctn{Conclusion}
-    After battling with \itl{GTK2}, \itl{GTK3} and \itl{Glade} it was evident that KoMoDo should be rebuilt from the ground up, something which could become either an opersource or group project. Further deliberation and meetings with Professor David Brailsford fortified this conclusion. Most of the \itl{Jimulator} and parts of chump could stay relatively unchanged, but KoMoDo would need to be completely rewritten. This would bring about greater oppertunity to do things correctly and removed tight coupling between the UI and logic.\\\\
+    After battling with \itl{GTK2}, \itl{GTK3} and \itl{Glade} it was evident that KoMoDo should be rebuilt from the ground up, a task which should either be made opensource or a group project. Further deliberation and meetings with Professor David Brailsford fortified this conclusion. Most of the \itl{Jimulator} and parts of chump could stay relatively unchanged, but KoMoDo would need to be completely rewritten. This would bring about greater opportunity to do things correctly and remove the tight coupling between the UI and logic.\\\\
     %
     Consequently, to at least improve KoMoDo's current UI, work will be carried on using \itl{GTK1}, building features onto KoMoDo 'as is' while refining the UI. Reducing some of the buttons in the action bar should bring KoMoDo more inline with the design of other IDEs, making it more intuitive to use. Working the breakpoints into the memory display will allow for more intuitive use, all this can be achieved while still maintaining the complex memory window. Moreover, some sort of memory visualization which would display occupied sectors could be useful to programmers. Finally, converting some of the buttons into pictures will help to convey their use.
     %Porting is not feasible, would be better to re-implement KoMoDo from the ground up
@@ -57,7 +57,7 @@
   GitHub hosts Git which is a distributed version control system and the primary form of backup. Along with GitHub backups are regularly made to Google drive and Dropbox, with the GitHub backup always being the most up-to-date. Git branches are used to test and work on features which are in progress, this keeps the Master branch functional. Finally, minor changes are often committed so that a full log of the progress is maintained.
 
   \sssctn{Progress Management}
-  A Kanban is used to track features through the inception/implementation/testing/complete phases. Regular sprints are used typically taking place from Wednesday through to Saturday. The sprints are for both the documentation and code. The overall progress is monitored using a Gantt chart.
+  A Kanban is used to track features through the inception/implementation/testing/complete phases. Sprints occur regularly, typically taking place from Wednesday through to Saturday. The sprints are for both the documentation and code. The overall progress is monitored using a Gantt chart.
   %Vim for text editing
   %built on an Intel Nuc
   %
@@ -69,7 +69,7 @@
     \item Poor project management
     \item Sloppy development practices
   }
-
+%
   Software developers now are far more conscious of the development demands and can better determine outlandish goals. They acquire these via university, accelerator courses or while on the job. Some, may not understand the gravity of their decisions until such time as project implementation begins. This is all part of the experience of becoming a developer.\\\\
   %
   Early development of the requirements, and research, somewhat aided in the decisions made in this project. However, there was no prior experience porting code to more relevant APIs. The realisation that porting was out of the question put the project at risk. However, it has been a valuable lesson in dealing with legacy systems.\\\\
@@ -85,7 +85,7 @@
   %
   The breadth of the prototyping phase is due to the nature of the project, it is crucial to understand how the components already existent in KoMoDo interact and their implications. Furthermore, it was important to fully develop an idea of what KoMoDo already had in place. There are many features in KoMoDo that, due to the convoluted UI, are obfuscated.
   \sssctn{Final product}
-  Changes to KoMoDo were made using scarce GTK1 documentation and by using the existing code as reference. The logic used to make the changes may well not be optimal, but given the resources were the best.\\\\
+  Changes to KoMoDo were made using scarce \itl{GTK1} documentation and by using the existing code as reference. The logic used to make the changes may well not be optimal, but given the resources were the best.\\\\
   \bld{\medium{User Interface\\\\}}
   % Reworked the UI
   As one of the primary areas of improvement the user interface was reworked first. Emphasis was put into replacing unnecessary text with images, thereby reducing the clutter. KoMoDo's own hard coded UI was the baseline for understanding \itl{GTK1} because the documentation was so sparse.
@@ -104,7 +104,7 @@
   \bld{\medium{Register Display\\\\}}
   % Reworked the register display to make it clearer what change had occured
   \fig{\centering\img{0.5}{kmdreg}}{Memory notifications}{kmdregister}
-  When debugging an application intricate details can often be missed. To alleviate this problem the register pane was changed to highlight changes which occur during the programs execution. Highlighting the changes provides user's with additional information so that they are made aware of an instructions exact actions.\\\\
+  When debugging an application intricate details can often be missed. To alleviate this problem the register pane was reworked to highlight changes which occur during the programs execution. Highlighting the changes provides user's with additional information so that they are made aware of an instructions exact actions.\\\\
   %
   \bld{\medium{Loading Source Files\\\\}}
   % Reworked how code is opened
@@ -115,10 +115,10 @@
   % Reworked requirements for installation
   %
   \bld{\medium{Automatic Config Creation\\\\}}
-  Upon attempting to launch KoMoDo for the first time unless \func{kmd -c} was issued prior to launching the actual application KoMoDo would not start. The requirement to manually force config creation degrades the user experience. To allay the issue KoMoDo will now automatically create the configuration files if one did not exist.\\\\
+  Upon attempting to launch KoMoDo for the first time unless \func{kmd -c} was issued prior to launching the actual application KoMoDo would not start. The requirement to manually force config creation degrades the user experience. To allay the issue KoMoDo will now automatically create the configuration file if one did not exist.\\\\
   %
   \bld{\medium{Memory Visualisation\\\\}}
-  For students and power user's to better understand the memory impact of their code memory visualisation was introduced. The visualisation highlights areas where code exists. Additionally, users can use this memory visualisation to draw images using their code much like figure FIGURE HERE.\\\\
+  For students and power user's to better understand the memory impact of their code memory visualisation was introduced. The visualisation highlights areas where code exists. Additionally, users can use this memory visualisation to draw images using their code much like figure \textcolor{red}{FIGURE HERE}.\\\\
   %
   \bld{\medium{Bug Fix: Orphaned Jimulator\\\\}}
   A rather prolific bug which has struck countless students is the orphaned \itl{Jimulator} process. The process remains running even when KoMoDo had crashed, eventually leading to an army of orphaned processes. The fix for this bug relies on the Linux kernel to notify and kill the orphaned process.\\\\

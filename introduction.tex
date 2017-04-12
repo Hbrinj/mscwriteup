@@ -2,30 +2,30 @@
 \sctn{Background}
 KoMoDo is an interactive screen-display tool, using X-Windows on the Unix/GNU Linux architecture. It was originally designed by Charlie Brej of the Dept. of Computer Science, University of Manchester. The majority of the current maintenance is handled by Jim Garside -- a senior lecturer at the University of Manchester.\\\\
 %
-The early history of KoMoDo is hazy but it was built using GLib and GTK 1.2 which both date back to 1999.\\\\
+The early history of KoMoDo is hazy but it was built using \itl{GLib} and \itl{GTK 1.2} which both date back to 1999.\\\\
 %
 KoModo is used to teach students the low-level architecture of modern computers. The University of Nottingham uses it as a tool in the first year for the core module G51CSF. It provides an environment in which students can learn about machine code and learn the complexities of instruction design.\\\\
 %
 KoMoDo teaches students to think about the programs they write in a low-level manner, which is close to the `bare metal'. This is in contrast to the more abstract style of a typical high-level language.\\\\
 %
-KoMoDo, in the context of a teaching aid, is primarily run in emulation mode. The back-end emulator running as a process, accessed via a two-way Unix pipe, is called the jimulator. The jimulator is the driving force behind KoMoDo.\\\\
+KoMoDo, in the context of a teaching aid, is primarily run in emulation mode. The back-end emulator running as a process, accessed via a two-way Unix pipe, is called the \itl{Jimulator}. The \itl{Jimulator} is the driving force behind KoMoDo.\\\\
 %
-KoMoDo also uses a disassembler called chump (if rendered upside down in an unknown font it spells `dump'). Chump is used to convert the resulting assembler instructions back to something that KoMoDo can use and display to the user.\\\\
+KoMoDo also uses a disassembler called \itl{Chump} (if rendered upside down in an unknown font it spells `dump'). \itl{Chump} is used to convert the resulting assembler instructions back to something that KoMoDo can use and display to the user.\\\\
 %
 Appreciation for KoMoDo runs deep. Although first year students do not generally realise the importance of KoMoDo until much later on in their degree course, it is nevertheless  important to keep it alive and fully functional.
 %
 \sctn{Aims and Objectives}
 \ssctn{Aims}
-The aim of this project is to redesign KoMoDo and provide it with much needed enhancements and features. The enhancements will come in several forms; a revamped user interface, a better user experience and syntax-highlighted ARM instructions. KoMoDo's portability to platforms other than Linux is also on the agenda. For the duration of this project Linux will remain the primary target platform. Students receive exposure to Linux only via the use of KoMoDo so it is a primary goal to ensure full functionality in the Linux ecosystem.
+The aim of this project is to redesign KoMoDo and provide it with much needed enhancements and features. The enhancements will come in several forms; a revamped user interface, a better user experience and syntax-highlighted ARM instructions. KoMoDo's portability to platforms other than Linux is also on the agenda. For the duration of this project Linux will remain the primary target platform. Students receive exposure to Linux only via the use of KoMoDo, as such, it is one of the primary objectives that KoMoDo performs fully on Linux systems.
 \ssctn{Objectives}
 \itm{
 	\item Dissect KoMoDo \itm{
-			\item Discover how KoMoDo communicates with the jimulator
-			\item Discover how memory is shared between the jimulator and KoMoDo
-			\item Discover how Chump is used to show disassembled ARM instructions
+			\item Discover how KoMoDo communicates with the \itl{Jimulator}
+			\item Discover how memory is shared between the \itl{Jimulator} and KoMoDo
+			\item Discover how \itl{Chump} is used to show disassembled ARM instructions
 		}
 	\item Future proof KoMoDo \itm{
-			\item Use a well established framework such as QT
+			\item Use a well established framework such as \itl{QT}
 			\item Ensure libraries used are easily changed and or updated
 			\item Develop a modern UI and improved UX
 		}
@@ -34,8 +34,8 @@ The aim of this project is to redesign KoMoDo and provide it with much needed en
 			\item Make moves towards ensuring KoMoDo++'s use on multiple platforms
 		}
 	\item Stretch goals \itm{
-			\item Convert the jimulator to work independently of the platform
-			\item Convert Chump to work independently of the platform
+			\item Convert the \itl{Jimulator} to work independently of the platform
+			\item Convert \itl{Chump} to work independently of the platform
 			\item Convert the assembler to work independently of the platform
 		}
 }

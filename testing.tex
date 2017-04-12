@@ -6,7 +6,7 @@ The final round of testing consisted of three stages. System profiling, where Ko
 %
 Performance profiling provides developers with information about the runtime of their application. In particular, it was important to profile KoMoDo to ensure that it performs to a high standard on both university and student machines. Of the many profiling methods, two were used, memory checking and performance analysis. Memory checking looks for poor memory management which can introduce memory leaks. Performance analysis looks at the runtime behaviour of the application, providing a breakdown of CPU intensive sections of code.\\\\
 %
-Application testing was carried out throughout KoMoDo's development, thereby quickly fixing any bugs during the early iterations of development. Any failures are noted in the test-table in the Appendix. Fixes to issues encountered are provided below the original test. Once KoMoDo was complete the tests were executed for a final time to ensure the finished software worked to a high standard. Although the requirements for KoMoDo changed during the development phase, the tests ensured that the new requirements were met.\\\\
+Application testing was carried out throughout KoMoDo's development, thereby quickly fixing any bugs during the early iterations. Any failures are noted in the test-table in the Appendix. Fixes to issues encountered are provided below the original test. Once KoMoDo was complete the tests were executed for a final time to ensure the finished software worked to a high standard. Although the requirements for KoMoDo changed during the development phase, the tests ensured that the new requirements were met.\\\\
 %
 Usability testing was informally carried out through the design cycle. By testing early, KoMoDo's user-interface and user-experience could be better improved. The final round of usability testing provides a series of simple tasks which user's need to carry out. The tasks were given to a variety of people.\\\\
 %
@@ -26,7 +26,7 @@ A suitable test-bench was constructed to carry out the profiling. The test bench
   \item Intel i7-6700k 4.00GHz quad core
   \item 32GB DDR4 2400MHz
   \item NVIDEA GTX 1070
-  \item Operating system: Windows 10 Pro, AMD16, latest stable iteration
+  \item Operating system: Windows 10 Pro, AMD64, latest stable iteration
 }
 
 \ssctn{Application Profiling}
@@ -72,7 +72,7 @@ Profiling the memory was done using a piece of software called \itl{Valgrind}. \
 		}{Test path}{testpath}
 %
 \sssctn{Memory Profiling}
-Memory profiling identified two instances within KoMoDo which produced memory leaks. One was because an unfreed call \func{g\_strdup} and the other, an unfreed call to \func{g\_strconcat}. Additionally, there were many memory leaks in \itl{GTK1}, which could not be fixed. The leaks in \itl{GTK1} are inline with the rationale behind deprecating some of the original features for being poorly implemented.
+Memory profiling identified two instances within KoMoDo which produced memory leaks. One was because of an unfreed call to \func{g\_strdup} and the other, an unfreed call to \func{g\_strconcat}. Additionally, there were many memory leaks in \itl{GTK1}, which could not be fixed. The leaks in \itl{GTK1} are inline with the rationale behind deprecating some of the original features for being poorly implemented.
 \fig{
   \centering
   \begin{varwidth}{\linewidth}
