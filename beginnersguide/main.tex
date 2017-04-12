@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{lscape}
+\usepackage{pgfgantt}
+\usepackage{cleveref}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{calc}
+\usepackage{enumitem}
+\usepackage{varwidth}
+\usepackage{array,etoolbox}
+\usetikzlibrary{patterns}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{shapes}
+% \usepackage{url}
+\graphicspath{{./images/}}
+\usepackage{wrapfig}
+\usepackage[numbers]{natbib}
+\newcommand{\itm}[1]{\begin{itemize} #1 \end{itemize}}
+\newcommand{\num}[1]{\begin{enumerate} #1 \end{enumerate}}
+\newcommand{\desc}[1]{\begin{description} #1 \end{description}}
+%\newcommand{\descalign}{[leftmargin=!,labelwidth=\widthof{\bfseries #1}]}
+\newcommand{\sctn}[1]{\section{#1} }
+\newcommand{\ssctn}[1]{\subsection{#1} }
+\newcommand{\sssctn}[1]{\subsubsection{#1} }
+\newcommand{\img}[2]{\includegraphics[scale=#1]{#2}}
+\newcommand{\rarr}{$\rightarrow$ }
+\newcommand{\bld}[1]{\textbf{#1}}
+\newcommand{\itl}[1]{\textit{#1}}
+\newcommand{\ctr}[1]{\begin{center} #1 \end{center}}
+\newcommand{\fig}[3]{\ctr{\begin{figure}[htbp] #1 \caption{#2} \label{fig: #3} \end{figure}}}
+\newcommand{\wrp}[1]{\begin{wrapfigure}{r}{0.25\textwidth}
+						\centering
+							#1
+					 \end{wrapfigure}}
+\newcommand{\func}[1]{{\fontfamily{pcr}\selectfont #1}}
+\newcommand\ytl[2]{
+\parbox[b]{8em}{\hfill{\color{black}\bfseries\sffamily #1}~$\cdots\cdots$~}\makebox[0pt][c]
+{$\bullet$}\vrule\quad \parbox[c]{12.5cm}
+{\vspace{8pt}\color{black!40!black!80}\raggedright\sffamily #2.\\[15pt]}\\[-3pt]}
+\newcounter{magicrownumbers}
+\setcounter{magicrownumbers}{0}
+\def\rownumber{}
+
+\newcounter{rowno}
+\setcounter{rowno}{0}
+\hyphenation{KoMoDo}
+
+
+\title{KoMoDo Beginners Guide}
+\author{\includegraphics[scale=0.4]{UoN_arms}}
+%
+%
+\begin{document}
+\pagenumbering{gobble}
+\thispagestyle{empty}
+
+\maketitle{}
+\pagebreak
+\tableofcontents
+\pagebreak
+\pagenumbering{arabic}
+\include{background}
+\include{installation}
+\include{}
+%\let\clearpage\relax
+\end{document}

@@ -1,0 +1,30 @@
+% !TEX root = ./main.tex
+\sctn{Installation}
+\ssctn{Manual}
+Manual installation of KoMoDo is a bit involved. First ensure the target system has the relevant libraries needed for KoMoDo. The libraries
+\itm{
+  \item \func{libgtk-1.2}
+  \item \func{libgdk-1.2}
+  \item \func{libglib-1.2}
+}
+should be on the system, they can be located in either \func{/usr/lib} or \func{/usr/local/lib}. Note, \func{libgdk} is installed with \func{libgtk}.\\\\
+%
+If the libraries could not be found, then install them using the package manager for the target system. Make sure to install package versions \itl{1.2.10}. If the package manager no longer contains the relevant packages, they can be found at the links below, make sure to download and install \itl{1.2.10} for both packages.
+\desc{
+  \item [\func{libgtk}] \textcolor{blue}{\url{ftp.gnome.org/pub/gnome/sources/gtk+/1.2/}}
+  \item [\func{libglib}] \textcolor{blue}{\url{ftp.gnome.org/pub/gnome/sources/glib/1.2/}}
+}
+%
+Once all the dependecies have been installed, download and unpack KoMoDo. To build KoMoDo you may also need the build tools for the target system. On most distros these are described as the \itl{Development Tools}, if your system does not already have these, install them via the package manager.\\\\
+%
+To build KoMoDo navigate to the main folder via terminal and follow these steps:
+\num{
+  \item \bld{Execute}: linux32 ./configure [optionally, add \itl{--prefix=/usr} to install to globally for the whole Linux system]
+  \item \bld{Execute}: make
+  \item \bld{Execute}: make install
+}
+%
+Finally to run KoMoDo in emulation mode, use \func{kmd -e}.
+
+\ssctn{Virtual Machine}
+Using the virtual machine is simple, t o begin, download and install \itl{Virtual Box} from \textcolor{blue}{\url{www.virtualbox.org}}. Once installed, navigate to the folder where the KoMoDo VM was downloaded to, double click to open the \func{KoMoDoVM.vbox} file. Opening the file should add it to \itl{Virtual box}, once its there simply start the virtual machine. If for any reason you wish to change any of the virtual machine's settings, do so before running the VM. Refer to the \itl{Virtual Box} documentation for any other relevant information.
