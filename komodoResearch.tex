@@ -46,7 +46,7 @@ A \itl{BR\_WOT\_U\_DO} command is sent when performing a UI update. KoMoDo uses 
   \end{description}
 }{Jimulator operation commands}{jimoperation}
 %
-\itl{BR\_RESET} is sent when the user wants to return to the start of a particular piece of code, so that it could be run again. KoMoDo exposes this message as a button, alternatively, KoMoDo will send this message when loading a new source file.\\\\
+\itl{BR\_RESET} is sent when the user wants to return to the start of a particular piece of code, so that it could be run again. KoMoDo exposes this message as a button. Alternatively, KoMoDo will send this message when loading a new source file.\\\\
 %
 \itl{BR\_PAUSE \& BR\_STOP} are treated the same within the \itl{Jimulator}, they halt operations and switch the \itl{Jimulator}'s internal state to `stopped'. KoMoDo exposes these as a button which the user can press once execution has started.\\\\
 %
@@ -68,7 +68,7 @@ A \itl{BR\_WOT\_U\_DO} command is sent when performing a UI update. KoMoDo uses 
 %
 KoMoDo uses \itl{BR\_SET\_MEM} when a KMD source file has been compiled and is being loaded, KoMoDo parses the compiled KMD file, updates its internal source structure and also sets the \itl{Jimulator}'s emulated memory.\\\\
 %
-\itl{BR\_SET\_REG} is called when the user changes a register value in a specific register bank. KoMoDo sends the register value and address to the \itl{Jimulator}. Where the \itl{Jimulator} updates its internal representation\\\\
+\itl{BR\_SET\_REG} is called when the user changes a register value in a specific register bank. KoMoDo sends the register value and address to the \itl{Jimulator}. This is where the \itl{Jimulator} updates its internal representation\\\\
 %
 KoMoDo sends \itl{BR\_GET\_MEM} when the user has clicked a row of the memory table. This is to fill the appropriate memory row with the corresponding data.\\\\
 %
@@ -79,8 +79,8 @@ KoMoDo sends \itl{BR\_GET\_MEM} when the user has clicked a row of the memory ta
 \sssctn{Breakpoint Commands}
 \fig{
   \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries \footnotesize BR\_BP\_WRITE}]
-    \item[\footnotesize BR\_BP\_GET] Get the trap status and a bitfield representing the active breakpoints.
-    \item[\footnotesize BR\_BP\_SET] Set the trap status and the bitfield representing the active breakpoints.
+    \item[\footnotesize BR\_BP\_GET] Get the trap status and a bit-field representing the active breakpoints.
+    \item[\footnotesize BR\_BP\_SET] Set the trap status and the bit-field representing the active breakpoints.
     \item[\footnotesize BR\_BP\_READ] Get the definition for a particular breakpoint.
     \item[\footnotesize BR\_BP\_WRITE] Set the definition for a particular breakpoint.
   \end{description}
