@@ -200,6 +200,12 @@
       Terminal: Active checkbox & Features pressed in emulation mode & toggles printing output to terminal & toggles printing output to terminal & Pass.\\ \hline
       %
       Memvis: close & Memvis open & Closes memory visualisation & Closes memory visualisation & Pass.\\ \hline
+			%
+			Memvis: window `X' button & Memvis open & Closes memory visualisation & Closes memory visualisation & Pass.\\ \hline
+			%
+			Memvis: open & Memvis closed using `X' button & Opens memory visualisation & Crashes memory visualisation & Fail.\\ \hline
+      %
+			Memvis: open & Memvis closed using `X' button & Opens memory visualisation & Opens memory visualisation & Pass.\\ \hline
       %
       Memvis: memory visual & Memvis open & Shows taken sectors & Shows taken sectors & Pass.\\ \hline
       %
@@ -211,11 +217,27 @@
       %
       Unknown file & Open file dialog & Unknown format not compiled or loaded showing dialog box & Unknown format not compiled or loaded showing dialog box & Pass. \\ \hline
       %
-      & & & & \\ \hline
+      Shortcut: F4 Run & - & Runs the loaded program & Runs the loaded program & Pass. \\ \hline
       %
-      & & & & \\ \hline
+      Shortcut: F5 Pause & - & Pauses execution & Pauses execution & Pass. \\ \hline
       %
+			Shortcut: F6 Stop & - & Stops and resets the emulator & Stops and resets the emulator & Pass. \\ \hline
+			%
+			Shortcut: F7 Single-Step & - &Single steps the loaded source & Single steps the loaded source & Pass. \\ \hline
+			%
+
   \end{tabular}
+  \end{center}
+	\pagebreak
+	\begin{center}
+  \begin{tabular}{ | @{\makebox[2em][c]{\rownumber\space}} | p{4cm} |  p{5cm} | p{5cm} | p{5cm} | l |}
+		\hline
+		Input & Precautions & Expected outcome & Actual outcome & Result \\ \hline
+		Shortcut: F8 Multi-step & - & Multi-steps based on the input box & Multi-steps based on the input box & Pass. \\ \hline
+		%
+		Shortcut: F9 Times walk & - & Takes $x$ steps each tick & Takes $x$ steps each tick & Pass. \\ \hline
+		%
+	\end{tabular}
   \end{center}
   \restoregeometry
 	\end{landscape}
