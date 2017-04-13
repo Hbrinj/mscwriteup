@@ -1,0 +1,45 @@
+% !TEX root = ./main.tex
+\graphicspath{ {images/debug/} }
+\sctn{Debugging}
+\fig{\centering\img{1}{debug}}{Debug controls}{debugctrl}
+\ssctn{Single stepping}
+Single stepping allows for a single step in the execution to be carried out.
+\itm{
+  \item Main window \rarr Single-Step button
+  \item Shortcut: F7
+  \item \itl{Actions \rarr Single-Step}\\\\
+}
+\ssctn{Multi stepping}
+Multi stepping will take a number of steps as described in the text box or, until the program has no other steps to take.
+\itm{
+  \item Main window \rarr Multi-Step
+  \item Shortcut: F8
+  \item \itl{Actions \rarr Multi-Step}\\\\
+}
+\ssctn{Walking}
+Walking will take a number of steps each tick continually.
+\itm{
+  \item Main window \rarr Timed walk
+  \item Shortcut: F8
+  \item \itl{Actions \rarr Walk}
+}
+
+\ssctn{Breakpoints}
+Breakpoint usage can be activated or deactivated via the tick box in the program control, as shown in Figure \ref{fig: debugctrl}.
+\sssctn{Simple breakpoints}
+Simple breakpoints can be activated in one of two ways.
+\num{
+  \item \itl{Special \rarr Simple Breakpoints}
+  \item Double clicking a line in the memory window
+}
+This sets the breakpoint for a particular address. If the breakpoint system is active, then when the execution step lands on a breakpoint it will halt execution.
+\sssctn{Complex breakpoints}
+Complex breakpoints can be set via \itl{Special \rarr Breakpoints}. Complex breakpoints can set specific conditions for the breakpoint to occur. One such usage is to use a single breakpoint for multiple memory addresses by setting the correct mask.
+
+\ssctn{Watchpoints}
+Watchpoint usage can be [de]activated via the tick box in the program control, as shown in Figure \ref{fig: debugctrl}
+\sssctn{Simple Watchpoints}
+Simple watchpoints can be accessed via \itl{Special \rarr Simple Watchpoints}. The Watchpoints allow developers to check memory addresses during a programs execution, watching for changes.
+
+\sssctn{Complex Watchpoints}
+Complex watchpoints can be accessed via \itl{Special \rarr Watchpoints}. Much like complex breakpoints, they provide greater control and masking abilities on memory addresses.
