@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[]{article}
 \usepackage{hyperref}
 \usepackage{verbatim}
 \usepackage{graphicx}
@@ -7,7 +7,8 @@
 \usepackage{lscape}
 \usepackage{pgfgantt}
 \usepackage{cleveref}
-\usepackage[a4paper,margin=1in]{geometry}
+%\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[a4paper,twoside, top=0.75in, left=1in, right=0.75in, bottom=0.75in]{geometry}
 \usepackage{calc}
 \usepackage{enumitem}
 \usepackage{varwidth}
@@ -67,13 +68,26 @@ Whether downloading developed code to an actual ARM chip, or to the \itl{Jimulat
 %
 The aim of this project is to modernize and improve upon the KoMoDo interactive environment by enhancing the display of such features as single stepping, register contents and memory contents. Facilities of this sort enable students to learn about the intricacies of the machines and languages they work with.\\\\
 %
-Over time KoMoDo has become dated and component packages that were once in their prime are now outdated and hard to find. A thorough upgrade is needed even for the basic components of the system. The desired outcome of this project is to create KoMoDo++ using modern software frameworks, while still relying on the \itl{Jimulator} as the ARM emulator.
+Over time KoMoDo has become dated and component packages that were once in their prime are now outdated and hard to find. A thorough upgrade is needed even for the basic components of the system. The desired outcome of this project is to create KoMoDo++ using modern software frameworks, while still relying on the \itl{Jimulator} as the ARM emulator.\\\\
 
 % A critical application used by many students in their studies in nottingham aswell as in manchester
 % Used to teach students the very basics of a computers architecture aswell as introducing them to machine code
 % Needs to be updated so that students can still use it, at nottingham it's one of the only ways students can try a linux flavour
 
 \end{abstract}
+\begin{center}
+\normalsize{
+Submitted April 2017, in partial fulfilment of the\\ conditions of the award of the degree:\\[\baselinestretch 0.3cm]
+%
+Computer Science MSci Honours\\[\baselinestretch 0.3cm]
+\bld{University of Nottingham}\\ \bld{School of Computer Science and Information Technology}\\[\baselinestretch 0.3cm]
+%
+I hereby declare that this dissertation is all my own\\ work, except as indicated in the text:\\[\baselinestretch 0.3cm]
+%
+Signed: \line(1,0){250}\\[\baselinestretch 0.5cm]
+Date: \line(1,0){20} / \line(1,0){20} / \line(1,0){20}
+}
+\end{center}
 \pagebreak
 \tableofcontents
 \pagebreak
