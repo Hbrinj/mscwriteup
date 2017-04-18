@@ -92,6 +92,7 @@
   %
   \fig{\centering\img{0.5}{kmdmain}}{New KoMoDo UI}{kmdnew}
   %
+  \pagebreak
   During the design stages another issue that was identified was the density of the tool bar and the obscurity of the program control `multi-step' and `walk'. Steps were taken to reduce the visual impact of the toolbar and increase the clarity of both `multi-step' and `walk'.\\\\
   %
   The revamped visuals follow the standard design patterns for similar programs; providing a more intuitive experience.\\\\
@@ -118,7 +119,8 @@
   Upon attempting to launch KoMoDo for the first time unless \func{kmd -c} was issued prior to launching the actual application KoMoDo would not start. The requirement to manually force config creation degrades the user experience. To allay the issue KoMoDo will now automatically create the configuration file if one did not exist.\\\\
   %
   \bld{\medium{Memory Visualisation\\\\}}
-  For students and power users to better understand the memory impact of their code memory visualisation was introduced. The visualisation highlights areas where code exists. Additionally, users can use this memory visualisation to draw images using their code much like figure \textcolor{red}{FIGURE HERE}.\\\\
+  For students and power users to better understand the memory impact of their code memory visualisation was introduced. The visualisation highlights areas where code exists. Additionally, users can use this memory visualisation to draw images using their code much like Figure \ref{fig: memvis}.\\\\
+  \fig{\centering\img{0.5}{memvis}}{Memory Visualisation}{memvis}
   %
   \bld{\medium{Bug Fix: Orphaned Jimulator\\\\}}
   A rather common bug which has struck countless users of KoMoDo is the orphaned \itl{Jimulator} process. The process remains running even when KoMoDo had crashed, eventually leading to an army of orphaned processes. The fix for this bug relies on the Linux kernel to notify and kill the orphaned process.\\\\
