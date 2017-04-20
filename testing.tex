@@ -72,7 +72,7 @@ Profiling the memory was done using a piece of software called \itl{Valgrind}. \
 		}{Test path}{testpath}
 %
 \sssctn{Memory Profiling}
-Memory profiling identified two places within KoMoDo which produced memory leaks. One was because of an unfreed call to \func{g\_strdup} and the other, an unfreed call to \func{g\_strconcat}. Additionally, there were many memory leaks in \itl{GTK1}, which could not be fixed. The leaks in \itl{GTK1} are inline with the rationale behind deprecating some of the original features for being poorly implemented.
+Memory profiling identified two places within KoMoDo which produced memory leaks. One was because of an unfreed call to \func{g\_strdup} and the other, an unfreed call to \func{g\_strconcat}. Additionally, there were many memory leaks in \itl{GTK1}, which could not be fixed. The leaks in \itl{GTK1} are in line with the rationale behind deprecating some of the original features for being poorly implemented.
 \fig{
   \centering
   \begin{varwidth}{\linewidth}
@@ -90,7 +90,7 @@ The CPU profiling produced the expected results. From Figure \ref{fig: cpuprof} 
     \verbatiminput{./testing/perfcpu-prof.txt}
   \end{varwidth}
 }{Usage profile}{cpuprof}
-
+\pagebreak
 \sssctn{Summary}
 In summary, running \itl{Valgrind} provided insight into my poor coding standards and also those of the designers of the early \itl{GTK1}. \itl{Perf} confirmed the simplicity of KoMoDo, showing that it is a lightweight ARM32 debugger and emulator.
 %
@@ -144,7 +144,7 @@ All participants except participant 2 found it easy to get started. This may be 
     \multicolumn{1}{ |c| }{4} & 8 & 7 & 6 & 8 & 7 & 7.2\\ \hline
 		\end{tabular}
 \end{center}
-Task 1 was used to understand how intuitive the UI is. From the results the participants found this task easy. They were confronted with controls and menus that they were used to. The participant with the least technical knowledge also found it easy to navigate the UI.\\\\
+Task 1 was used to understand the intuitiveness of the UI. From the results the participants found this task easy. They were confronted with controls and menus that they were used to. The participant with the least technical knowledge also found it easy to navigate the UI.\\\\
 %
 %
 \bld{\medium{Task 2\\}}
@@ -158,7 +158,7 @@ Task 1 was used to understand how intuitive the UI is. From the results the part
 
 		\end{tabular}
 \end{center}
-Task 2 focused on the new features that were added to KoMoDo. In particular whether the new features aided in the participants understanding of the actions of a single step. All participants found this easy, a brief explanation was given to participant 2 about what single stepping is.\\\\
+Task 2 focused on the new features that were added to KoMoDo. In particular, whether the new features aided in the participants understanding of the actions of a single step. All participants found this easy, a brief explanation was given to participant 2 about what single stepping is.\\\\
 %
 %
 \bld{\medium{Task 3\\}}

@@ -20,9 +20,9 @@
     \sssctn{Porting to GTK2}
     \itl{GTK2} was the next target version after \itl{GTK3} proved to be far more perplexing. \itl{GTK2} allows for deprecated features to be enabled, this would allow for iterative changes to the UI without breaking everything.\\\\
     %
-    To begin with, \itl{Glade} was used to implement the UI change proposed in the design chapter. \itl{Glade} for \itl{GTK2} came with its own problems. \itl{Glade} would often crash (tested on multiple devices) the crash would cause inconsistencies within the XML interface file. Consequently, the need interface needed to be remade. This was a lesson quickly learnt, due to the nature of this work version control was already in use. Consequently, regular backups were performed after minor changes.\\\\
+    To begin with, \itl{Glade} was used to implement the UI change proposed in the design chapter. \itl{Glade} for \itl{GTK2} came with its own problems. \itl{Glade} would often crash (tested on multiple devices) the crash would cause inconsistencies within the XML interface file. Consequently, the interface needed to be remade. This was a lesson quickly learnt, due to the nature of this work version control was already in use. Consequently, regular backups were performed after minor changes.\\\\
     %
-    Using the \itl{Glade} interface file is straightforward and requires only a few \itl{GTK} function calls. Problems arose when connecting the glade UI to the old logic, \itl{Glade} didn't allow the use of deprecated features. Therefore, it was necessary to port some of the code over to use the new treeview implementation. In a broad sense this was successful, but in actual fact it introduced buggy logic between the old \itl{GTK1} code and the new \itl{GTK2} code. Additionally, the documentation and coding style were far from desireable, it was evident from the sparse comments asking 'what does this do' that the majority of KoMoDo was implemented by a single person. Furthermore, many of KoMoDo's features needed to be disabled so that the new UI could be integrated, something that would be detrimental to KoMoDo.
+    Using the \itl{Glade} interface file is straightforward and requires only a few \itl{GTK} function calls. Problems arose when connecting the glade UI to the old logic, \itl{Glade} didn't allow the use of deprecated features. Therefore, it was necessary to port some of the code over to use the new treeview implementation. In a broad sense this was successful, but in actual fact it introduced buggy logic between the old \itl{GTK1} code and the new \itl{GTK2} code. Additionally, the documentation and coding style were far from desireable, it was evident from the sparse comments asking `what does this do' that the majority of KoMoDo was implemented by a single person. Furthermore, many of KoMoDo's features needed to be disabled so that the new UI could be integrated, something that would be detrimental to KoMoDo.
     % There exists a flag which allows for deprecated features to be enabled
     % The new user interface is written in glade
     % clsists exist but are part of the deprecated features
@@ -42,15 +42,15 @@
   %
   As for language, KoMoDo was written in pure C and so any changes to the logic will also be made using C.\\\\
   %
-  Furthermore, the primary platform that KoMoDo needs to run on is *nix. It will be developed primarily on a *nix machine and then if possible, on other platforms. The choice of framework is the determining factor when attempting to run on multiple platforms. In KoMoDo's case it is heavily dependent on \itl{GTK} and \itl{GLib}. Consequently, KoMoDo would require a full rewrite to make it platform independent.
+  Furthermore, the primary platform that KoMoDo needs to run on is *nix. It will be developed primarily on a *nix machine and then if possible, on other platforms. The choice of framework is the determining factor when attempting to run on multiple platforms. In KoMoDo's case it is heavily dependent on \itl{GTK} and \itl{GLib}. Consequently, KoMoDo would require a full rewrite to make it platform agnostic.
   %predetermined due to the nature of the project
   %using GTK+ 1.2 and Glib 1.2
   \ssctn{Tools and Technologies}
   \sssctn{Building}
-  KoMoDo is built using gcc but uses Autoconf and Make to configure the correct library paths and includes. The external libraries are dynamically linked with KoMoDo, this means that the user must first install the KoMoDo dependencies.
+  KoMoDo is built using \itl{gcc} but uses \itl{Autoconf} and \itl{Make} to configure the correct library paths and includes. The external libraries are dynamically linked with KoMoDo, this means that the user must first install the KoMoDo dependencies.
 
   \sssctn{Code}
-  Code is written in a text editor, in particular Vim. Vim is a barebones editor with no minimal functionality. It is fast, reliable and comes with a whole host of useful features.\\\\
+  Code is written in a text editor, in particular \itl{Vim}. \itl{Vim} is a barebones editor with no minimal functionality. It is fast, reliable and comes with a whole host of useful features.\\\\
   KoMoDo is being developed on an Intel NUC (Next Unit of Computing) running Arch Linux. As the main driver the NUC is fast and runs a barebones Linux build which is perfect for development.
 
   \sssctn{Backups}
@@ -74,9 +74,9 @@
   %
   Early development of the requirements, and research, somewhat aided in the decisions made in this project. However, there was no prior experience porting code to more relevant APIs. The realisation that porting was out of the question put the project at risk. However, it has been a valuable lesson in dealing with legacy systems.\\\\
   %
-  Due to the diligent time planning the errors in judgement were inconsequential to the overall software development. Planning for issues is all part of using a Gant chart. Furthermore, using the Agile approach meant that both the software and write-up were quickly progressed to reflect the change in requirements. The use of a Kanban aided in micro progress updates as the project was being developed.\\\\
+  Due to the diligent time planning the errors in judgement were inconsequential to the overall software development. Planning for issues is all part of using a Gantt chart. Furthermore, using the Agile approach meant that both the software and write-up were quickly progressed to reflect the change in requirements. The use of a Kanban aided in micro progress updates as the project was being developed.\\\\
   %
-  Finally, regular meetings with everyone involved in the project meant they were kept up-to-date. This provided a great deal of flexibility and trust to be established by both parties.
+  Finally, regular meetings with everyone involved in the project meant they were kept up-to-date. This provided a great deal of flexibility and trust to be established by all parties involved.
 
   \ssctn{Implementation of Software}
   Software development was carried out with the best coding practices in mind. Additionally, it was important to develop code which was inline with the current style, this would enable future developers to more readily become accustomed to the already in-place coding practices.
@@ -102,6 +102,7 @@
   % Reworked the breakpoint display in the main memory window
   Breakpoints in the original KoMoDo were obscure and rarely used by new students. To increase their usage a particular effort was made to bring their styling inline with other common debuggers. Additionally, their explicit usage is now detailed in the KoMoDo beginners guide.\\\\
   %
+
   \bld{\medium{Register Display\\\\}}
   % Reworked the register display to make it clearer what change had occured
   \fig{\centering\img{0.5}{kmdreg}}{Memory notifications}{kmdregister}
@@ -112,7 +113,7 @@
   KoMoDo's original UI used a manually driven two-step process by which, source files were converted to a \func{KMD} format and then finally loaded. The potential reason for using this two-step process was that \func{KMD} files could be loaded without the need for an initial compilation step. However, this method of opening files was arduous and counter intuitive. The reworked version now does away with this two-step process opening either the source or \func{KMD} file. Additionally, a reload button was added which reloads the previously loaded source file. The reload button allows users to quickly reload code that they have edited in a text editor.\\\\
   %
   \bld{\medium{KoMoDo Installation\\\\}}
-  Parts of the build process have been updated to easily setup a base system. This base system now provides the AASM, used to compile the source file into a \func{KMD} file and the compile script; which KoMoDo looks for to compile sources. The addition of these files provides users with the ability to begin writing and debugging ARM32 straight after installation\footnote{provided they can get gtk and glib installed}. Additionally, KoMoDo's configuration files are now stored in the standard Linux configuration path.\\\\
+  Parts of the build process have been updated to easily setup a base system. This base system now provides the \itl{AASM} used to compile the source file and the compile script; which KoMoDo looks for to compile sources. The addition of these files provides users with the ability to begin writing and debugging ARM32 straight after installation\footnote{provided they can get gtk and glib installed}. Additionally, KoMoDo's configuration files are now stored in the standard Linux configuration path.\\\\
   % Reworked requirements for installation
   %
   \bld{\medium{Automatic Config Creation\\\\}}
@@ -133,10 +134,10 @@
   Upon resizing the window, if the frame became too narrow a phantom scrollbar would appear with no apparent use. This fix was trivial, it would seem that through the countless iterations of KoMoDo, between its initial inception and the addition of a range based scrolling system, the developer must have forgotten the type of container the memory window was added to. Directly adding the memory window to the parent container fixed the phantom scrollbar problem.\\\\
   %
   \bld{\medium{Additions: Virtual Machine Image\\\\}}
-  To provide alternative access to KoMoDo offline, a VM image running Centos 7 was created via \itl{Virtual Box}. This image has a pre-built version of KoMoDo set-up and running. Users must install \itl{Virtual Box} and run the image to begin using KoMoDo. Using KoMoDo this way removes the need for individuals to locate the legacy dependencies \itl{GTK1} and \itl{GLib-1.2}. Additionally, it can be run on multiple operating systems.\\\\
+  To provide alternative access to KoMoDo offline, a VM image running Centos 7 was created via \itl{Virtual Box}. This image has a pre-built version of KoMoDo set-up and running. Users must install \itl{Virtual Box} and run the image to begin using KoMoDo. Using KoMoDo this way removes the need for individuals to locate the legacy dependencies \itl{GTK1} and \itl{GLib-1.2}. Additionally, it can be run on multiple operating systems. Its explicit usage is detailed within the beginners guide.\\\\
   %
   \bld{\medium{Additions: Beginners Guide\\\\}}
-  In an effort to further demystify KoMoDo an extensive beginners guide was developed. The beginners guide details the features within KoMoDo and how to use them.
+  In an effort to further demystify KoMoDo an extensive beginners guide was developed. The beginners guide details the features within KoMoDo and how to use them. The guide also provides details about installing KoMoDo on a Linux machine, detailing any complications.
   % Bug fixes:
   % Jimulator being orphaned
   % Installation missing required files for KoMoDo to use arm
