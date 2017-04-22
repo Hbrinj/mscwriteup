@@ -36,6 +36,38 @@
     %including logic.
     %Working with the current system is better, can provide consistancy within the code
     %UI can still be improved, reducing clutter
+  \ssctn{Revised requirements}
+  \itl{Functional requirements}\\
+	\itm{
+    \item Provide the same functionality as the current KoMoDo \itm{
+        \item Register banks \itm{
+					\item notify user of register changes
+				}
+        \item Memory view
+        \item Breakpoints
+        \item Single stepping
+        \item Multi stepping
+        \item Loading KMD files
+        \item Compiling source files
+      }
+    \item Introduce no additional dependencies
+		\item Breakpoints integrated into memory window
+		\item Ability to hide empty memory
+    \item Fix bugs
+    \item More complete build process
+		\item Active memory jump-to\\\
+  }
+  %
+  \itl{Non-functional requirements}\\
+  \itm{
+    \item Intuitive design \itm{
+        \item Basic view mode
+				\item Action icons
+      }
+    \item Compatibility: Linux
+    \item Similar responsiveness as the current KoMoDo
+		\item Create installer for supported platforms
+  }
 
   \ssctn{Language and Platform Decisions}
   Both the language and platform that KoMoDo is being developed on are pre-determined due to the existing software. KoMoDo (as discussed in the frameworks chapter) uses \itl{GTK+} 1.2 and \itl{GLib} 1.2 . Due to the complications with porting no further changes will be made to the API version for \itl{GTK} and \itl{GLib}.\\\\
